@@ -1,0 +1,220 @@
+================================================================================
+BESTGROUP HEADLESS CMS - FULL-STACK DEPLOYMENT GUIDE
+================================================================================
+Stack: Laravel 11 (REST API & Filament v3 Admin) + Next.js (App Router Theme Engine) + MySQL
+================================================================================
+
+TABLE OF CONTENTS:
+1. Architecture Overview
+2. Production Build Commands
+3. Environment Variables Configuration
+4. VPS Deployment (Ubuntu 22.04 / 24.04 + Nginx + PM2) [RECOMMENDED]
+5. Shared Hosting (cPanel) Deployment
+6. SSL, Caching & Performance Optimization
+
+--------------------------------------------------------------------------------
+1. ARCHITECTURE OVERVIEW
+--------------------------------------------------------------------------------
+The project is decoupled into two primary systems:
+- Backend: Laravel 11 REST API + Filament v3 Admin Panel (Serves `/api/v1/page/{slug}` & `/admin`)
+- Frontend: Next.js App Router (Dynamically queries Laravel API and renders active theme)
+
+Recommended Domain Structure:
+- Frontend:  https://bestgroup.com (or https://www.bestgroup.com)
+- Backend:   https://api.bestgroup.com (Admin Panel: https://api.bestgroup.com/admin)
+
+--------------------------------------------------------------------------------
+2. PRODUCTION BUILD COMMANDS
+--------------------------------------------------------------------------------
+
+A. BACKEND (Laravel 11):
+   cd backend
+   composer install --no-dev --optimize-autoloader
+   php artisan key:generate --force
+   php artisan storage:link
+   php artisan migrate --force
+   php artisan config:cache
+   php artisan route:cache
+   php artisan view:cache
+   php artisan event:cache
+
+B. FRONTEND (Next.js):
+   cd frontend
+   npm ci
+   npm run build
+   # Run production server via PM2 or node:
+   npm start
+
+--------------------------------------------------------------------------------
+3. ENVIRONMENT VARIABLES CONFIGURATION
+--------------------------------------------------------------------------------
+
+A. Backend (.env):
+   APP_NAME=BestGroup
+   APP_ENV=production
+   APP_DEBUG=false
+   APP_URL=https://api.bestgroup.com
+
+   # Database Settings (MySQL)
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=bestgroup_prod
+   DB_USERNAME=bestgroup_user
+   DB_PASSWORD=YOUR_STRONG_PASSWORD
+
+   # CORS & Session
+   SESSION_DRIVER=database
+   SANCTUM_STATEFUL_DOMAINS=bestgroup.com,www.bestgroup.com
+
+B. Frontend (.env.production):
+   NEXT_PUBLIC_API_URL=https://api.bestgroup.com/api/v1
+   PORT=3000
+
+--------------------------------------------------------------------------------
+4. VPS DEPLOYMENT (Ubuntu / Nginx / PM2 / MySQL) - RECOMMENDED
+--------------------------------------------------------------------------------
+
+Step 1: Install System Prerequisites
+   sudo apt update && sudo apt upgrade -y
+   sudo apt install -y nginx mysql-server php8.2-fpm php8.2-mysql php8.2-mbstring \
+                       php8.2-xml php8.2-bcmath php8.2-curl php8.2-zip php8.2-intl \
+                       nodejs npm git certbot python3-certbot-nginx
+   sudo npm install -g pm2
+
+Step 2: Setup Laravel Backend
+   sudo mkdir -p /var/www/bestgroup/backend
+   # Clone or upload your backend code to /var/www/bestgroup/backend
+   cd /var/www/bestgroup/backend
+   composer install --no-dev --optimize-autoloader
+   cp .env.example .env
+   # Edit .env with your production database credentials
+   php artisan key:generate --force
+   php artisan storage:link
+   php artisan migrate --force --seed
+   php artisan filament:install --panels
+   php artisan config:cache && php artisan route:cache && php artisan view:cache
+
+   # Set proper permissions
+   sudo chown -R www-data:www-data /var/www/bestgroup/backend/storage /var/www/bestgroup/backend/bootstrap/cache
+   sudo chmod -R 775 /var/www/bestgroup/backend/storage /var/www/bestgroup/backend/bootstrap/cache
+
+Step 3: Setup Next.js Frontend
+   sudo mkdir -p /var/www/bestgroup/frontend
+   # Clone or upload your frontend code to /var/www/bestgroup/frontend
+   cd /var/www/bestgroup/frontend
+   npm ci
+   npm run build
+   # Start Next.js with PM2 daemon:
+   pm2 start npm --name "bestgroup-frontend" -- start
+   pm2 save
+   pm2 startup
+
+Step 4: Configure Nginx Virtual Hosts
+
+   A. Backend Nginx Config (/etc/nginx/sites-available/api.bestgroup.com):
+   ----------------------------------------------------------------------
+   server {
+       listen 80;
+       server_name api.bestgroup.com;
+       root /var/www/bestgroup/backend/public;
+
+       add_header X-Frame-Options "SAMEORIGIN";
+       add_header X-Content-Type-Options "nosniff";
+       index index.php;
+       charset utf-8;
+
+       location / {
+           try_files $uri $uri/ /index.php?$query_string;
+       }
+
+       location = /favicon.ico { access_log off; log_not_found off; }
+       location = /robots.txt  { access_log off; log_not_found off; }
+
+       error_page 404 /index.php;
+
+       location ~ \.php$ {
+           fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
+           fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+           include fastcgi_params;
+       }
+
+       location ~ /\.(?!well-known).* {
+           deny all;
+       }
+   }
+
+   B. Frontend Nginx Config (/etc/nginx/sites-available/bestgroup.com):
+   -------------------------------------------------------------------
+   server {
+       listen 80;
+       server_name bestgroup.com www.bestgroup.com;
+
+       location / {
+           proxy_pass http://127.0.0.1:3000;
+           proxy_http_version 1.1;
+           proxy_set_header Upgrade $http_upgrade;
+           proxy_set_header Connection 'upgrade';
+           proxy_set_header Host $host;
+           proxy_cache_bypass $http_upgrade;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           proxy_set_header X-Forwarded-Proto $scheme;
+       }
+   }
+
+Step 5: Enable Sites & Issue SSL Certificates
+   sudo ln -s /etc/nginx/sites-available/api.bestgroup.com /etc/nginx/sites-enabled/
+   sudo ln -s /etc/nginx/sites-available/bestgroup.com /etc/nginx/sites-enabled/
+   sudo nginx -t
+   sudo systemctl reload nginx
+
+   # Obtain free Let's Encrypt SSL Certificates:
+   sudo certbot --nginx -d bestgroup.com -d www.bestgroup.com
+   sudo certbot --nginx -d api.bestgroup.com
+
+--------------------------------------------------------------------------------
+5. SHARED HOSTING (cPanel) DEPLOYMENT
+--------------------------------------------------------------------------------
+
+A. Deploying Laravel Backend on cPanel:
+   1. In cPanel File Manager, create a folder outside public_html: `/home/username/bestgroup_backend/`.
+   2. Upload all Laravel backend files into `/home/username/bestgroup_backend/`.
+   3. Create a subdomain in cPanel: `api.bestgroup.com`. Set its Document Root to:
+      `/home/username/bestgroup_backend/public`.
+   4. In cPanel MySQL Databases:
+      - Create a database (e.g. `cpaneluser_bestgroup`).
+      - Create a user and grant ALL PRIVILEGES.
+      - Update `.env` in `/home/username/bestgroup_backend/.env` with these database details.
+   5. In cPanel Terminal or SSH:
+      cd /home/username/bestgroup_backend
+      php artisan storage:link
+      php artisan migrate --force --seed
+      php artisan filament:install --panels
+      php artisan config:cache && php artisan route:cache
+
+B. Deploying Next.js on cPanel:
+   Option 1: Using cPanel "Setup Node.js App":
+      1. Open "Setup Node.js App" in cPanel.
+      2. Choose Node.js version (v18 or v20+).
+      3. Set Application root: `/home/username/bestgroup_frontend`.
+      4. Set Application URL: `bestgroup.com`.
+      5. Set Application startup file: `node_modules/next/dist/bin/next` with argument `start`.
+      6. Upload frontend files, run `npm install` and `npm run build` from the cPanel terminal.
+      7. Click "Restart Application".
+
+--------------------------------------------------------------------------------
+6. SSL, CACHING & PERFORMANCE OPTIMIZATION
+--------------------------------------------------------------------------------
+1. Cloudflare CDN:
+   - Place Cloudflare in front of `bestgroup.com` and `api.bestgroup.com` for DDoS protection, global asset caching, and automatic WebP image compression.
+2. Next.js Image Optimization:
+   - External images from Unsplash or Laravel storage are loaded dynamically.
+3. Filament Admin Security:
+   - Restrict `/admin` access by IP or enable 2-Factor Authentication (2FA) via Filament plugins.
+4. Database Optimization:
+   - Regularly optimize database tables using `php artisan optimize`.
+
+================================================================================
+End of Deployment Guide
+================================================================================
