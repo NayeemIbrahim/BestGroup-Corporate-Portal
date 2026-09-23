@@ -1,6 +1,16 @@
 import { CmsApiResponse, CmsResponseData } from '@/types/cms';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:8000/api/v1';
+const getApiBaseUrl = () => {
+  if (process.env.NEXT_PUBLIC_API_URL) {
+    return process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '');
+  }
+  if (process.env.NEXT_PUBLIC_BACKEND_URL) {
+    return `${process.env.NEXT_PUBLIC_BACKEND_URL.replace(/\/$/, '')}/api/v1`;
+  }
+  return 'http://127.0.0.1:8000/api/v1';
+};
+
+const API_BASE_URL = getApiBaseUrl();
 
 /**
  * Fetch page data with active theme, blocks, and settings from Laravel API
