@@ -59,8 +59,36 @@ const wingDetailsMap: Record<
   },
 };
 
+const defaultBrands = [
+  {
+    brand_name: 'Best Real Estate',
+    logo_url: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=300&auto=format&fit=crop',
+    website_link: '#real-estate',
+  },
+  {
+    brand_name: 'Best E-Commerce',
+    logo_url: 'https://images.unsplash.com/photo-1556742049-0a67e55722c6?q=80&w=300&auto=format&fit=crop',
+    website_link: '#ecommerce',
+  },
+  {
+    brand_name: 'Best Model Pharmacy',
+    logo_url: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=300&auto=format&fit=crop',
+    website_link: '#pharmacy',
+  },
+  {
+    brand_name: 'Best Travel & Tours',
+    logo_url: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=300&auto=format&fit=crop',
+    website_link: '#travel',
+  },
+];
+
 export const ThemeABrandsBlock: React.FC<BrandsBlockProps> = ({ content }) => {
-  const brands = content?.brands_list || [];
+  const rawList = content?.brands_list;
+  const brands = Array.isArray(rawList) && rawList.length > 0 
+    ? rawList 
+    : typeof rawList === 'string' && rawList.trim().startsWith('[')
+    ? (function() { try { return JSON.parse(rawList); } catch { return defaultBrands; } })()
+    : defaultBrands;
 
   return (
     <section id="wings" className="py-28 bg-slate-900 border-y border-slate-800 relative overflow-hidden">

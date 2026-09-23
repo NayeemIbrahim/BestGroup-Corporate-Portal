@@ -52,12 +52,38 @@ const serviceMetaList = [
   },
 ];
 
+const defaultServices = [
+  {
+    icon: 'Building2',
+    title: 'Luxury & Commercial Real Estate',
+    description: 'Developing state-of-the-art residential condominiums, commercial hubs, and green-certified industrial parks.',
+  },
+  {
+    icon: 'ShoppingBag',
+    title: 'Omnichannel E-Commerce',
+    description: 'Nationwide consumer retail ecosystem powering tens of thousands of daily direct-to-consumer deliveries.',
+  },
+  {
+    icon: 'HeartPulse',
+    title: 'Best Model Pharmacy Network',
+    description: 'Standardized retail pharmacies guaranteeing 100% authentic medicine, professional consultation, and cold-chain compliance.',
+  },
+  {
+    icon: 'Plane',
+    title: 'Best Travel & Tours',
+    description: 'Luxury business travel, inbound tourism, customized holiday getaways, and worldwide visa & ticketing facilitation.',
+  },
+];
+
 export const ThemeAServicesBlock: React.FC<ServicesBlockProps> = ({ content }) => {
-  const {
-    section_title = 'Our Strategic Business Capabilities',
-    section_subtitle = 'Pioneering excellence across diversified high-growth sectors with benchmark infrastructure.',
-    services_list = [],
-  } = content || {};
+  const section_title = content?.section_title || 'Our Strategic Business Capabilities';
+  const section_subtitle = content?.section_subtitle || 'Pioneering excellence across diversified high-growth sectors with benchmark infrastructure.';
+  const rawList = content?.services_list;
+  const services_list = Array.isArray(rawList) && rawList.length > 0 
+    ? rawList 
+    : typeof rawList === 'string' && rawList.trim().startsWith('[')
+    ? (function() { try { return JSON.parse(rawList); } catch { return defaultServices; } })()
+    : defaultServices;
 
   return (
     <section id="services" className="py-28 bg-slate-950 text-white relative overflow-hidden">
