@@ -16,32 +16,38 @@ const API_BASE_URL = getApiBaseUrl();
  * Fetch page data with active theme, blocks, and settings from Laravel API
  */
 export async function getPageData(slug: string = 'home'): Promise<CmsResponseData | null> {
-  try {
-    const res = await fetch(`${API_BASE_URL}/page/${slug}`, {
-      // In development or demo mode, ensure dynamic data fetching
-      cache: 'no-store',
-      headers: {
-        'Accept': 'application/json',
-      },
-    });
+  const tryFetch = async (baseUrl: string): Promise<CmsResponseData | null> => {
+    try {
+      const res = await fetch(`${baseUrl}/page/${slug}`, {
+        cache: 'no-store',
+        headers: {
+          'Accept': 'application/json',
+        },
+      });
 
-    if (!res.ok) {
-      if (res.status === 404) {
-        console.warn(`[CMS API] Page not found: ${slug}`);
+      if (!res.ok) {
         return null;
       }
-      throw new Error(`Failed to fetch page data: ${res.statusText}`);
-    }
 
-    const response: CmsApiResponse = await res.json();
+      const response: CmsApiResponse = await res.json();
+      if (!response.success || !response.data) {
+        return null;
+      }
 
-    if (!response.success || !response.data) {
+      return response.data;
+    } catch {
       return null;
     }
+  };
 
-    return response.data;
-  } catch (error) {
-    console.error(`[CMS API] Fetch error for slug "${slug}":`, error);
-    return null;
+  // 1. Try configured API_BASE_URL
+  let data = await tryFetch(API_BASE_URL);
+
+  // 2. If failed and URL does not have /public/, try with /public/ for shared hosting environments
+  if (!data && !API_BASE_URL.includes('/public/')) {
+    const publicFallbackUrl = API_BASE_URL.replace(/\/api\/v1\/?$/, '/public/api/v1');
+    data = await tryFetch(publicFallbackUrl);
   }
+
+  return data;
 }
