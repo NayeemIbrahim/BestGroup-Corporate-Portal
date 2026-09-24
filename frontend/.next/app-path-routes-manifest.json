@@ -1,0 +1,11 @@
+{
+  "/[slug]/page": "/[slug]",
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/auth/login/route": "/api/auth/login",
+  "/dashboard/page": "/dashboard",
+  "/favicon.ico/route": "/favicon.ico",
+  "/investor-portal/page": "/investor-portal",
+  "/login/page": "/login",
+  "/page": "/"
+}

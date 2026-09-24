@@ -83,11 +83,11 @@ const defaultBrands = [
 ];
 
 export const ThemeABrandsBlock: React.FC<BrandsBlockProps> = ({ content }) => {
-  const rawList = content?.brands_list;
-  const brands = Array.isArray(rawList) && rawList.length > 0 
+  const rawList: any = content?.brands_list;
+  const brands: any[] = Array.isArray(rawList) && rawList.length > 0 
     ? rawList 
-    : typeof rawList === 'string' && rawList.trim().startsWith('[')
-    ? (function() { try { return JSON.parse(rawList); } catch { return defaultBrands; } })()
+    : typeof rawList === 'string' && (rawList as string).trim().startsWith('[')
+    ? (function() { try { return JSON.parse(rawList as string); } catch { return defaultBrands; } })()
     : defaultBrands;
 
   return (
@@ -113,7 +113,7 @@ export const ThemeABrandsBlock: React.FC<BrandsBlockProps> = ({ content }) => {
 
         {/* 4-Card Enterprise Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
-          {brands.map((brand, idx) => {
+          {brands.map((brand: any, idx: number) => {
             const meta = wingDetailsMap[brand.brand_name] || {
               icon: Building,
               accentColor: 'from-red-600 to-red-500',

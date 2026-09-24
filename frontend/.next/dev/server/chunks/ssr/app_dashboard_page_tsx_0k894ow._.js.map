@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 4, "column": 0}, "map": {"version":3,"sources":["file:///C:/Users/Nayeem%20PC/Desktop/Best%20Group/frontend/app/dashboard/page.tsx"],"sourcesContent":["\"use client\";\n\nimport { useEffect } from 'react';\nimport { useRouter } from 'next/navigation';\n\nexport default function DashboardPage() {\n  const router = useRouter();\n\n  useEffect(() => {\n    router.replace('/investor-portal');\n  }, [router]);\n\n  return (\n    <div className=\"min-h-screen bg-slate-900 flex items-center justify-center text-white\">\n      <div className=\"animate-pulse text-lg\">Redirecting to Investor Portal...</div>\n    </div>\n  );\n}\n"],"names":["DashboardPage","router","replace","className"],"mappings":";;;;;AAEA;AACA;AAHA;;;;AAKe,SAASA;IACtB,MAAMC,SAAS,IAAA,+IAAS;IAExB,IAAA,kNAAS,EAAC;QACRA,OAAOC,OAAO,CAAC;IACjB,GAAG;QAACD;KAAO;IAEX,qBACE,8OAAC;QAAIE,WAAU;kBACb,cAAA,8OAAC;YAAIA,WAAU;sBAAwB;;;;;;;;;;;AAG7C"}}]
+}

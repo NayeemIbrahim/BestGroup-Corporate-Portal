@@ -43,11 +43,11 @@ const defaultBrands = [
 ];
 
 export const ThemeBBrandsBlock: React.FC<BrandsBlockProps> = ({ content }) => {
-  const rawList = content?.brands_list;
-  const brands = Array.isArray(rawList) && rawList.length > 0 
+  const rawList: any = content?.brands_list;
+  const brands: any[] = Array.isArray(rawList) && rawList.length > 0 
     ? rawList 
-    : typeof rawList === 'string' && rawList.trim().startsWith('[')
-    ? (function() { try { return JSON.parse(rawList); } catch { return defaultBrands; } })()
+    : typeof rawList === 'string' && (rawList as string).trim().startsWith('[')
+    ? (function() { try { return JSON.parse(rawList as string); } catch { return defaultBrands; } })()
     : defaultBrands;
   const [activeBrandIndex, setActiveBrandIndex] = useState(0);
 
@@ -130,7 +130,7 @@ export const ThemeBBrandsBlock: React.FC<BrandsBlockProps> = ({ content }) => {
 
         {/* Masonry / Interactive Showcase Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          {brands.map((brand, idx) => {
+          {brands.map((brand: any, idx: number) => {
             const meta = wingDetails[idx % wingDetails.length];
             const isFeatured = idx === 0 || idx === 3;
 

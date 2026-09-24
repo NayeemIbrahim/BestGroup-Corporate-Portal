@@ -78,11 +78,11 @@ const defaultServices = [
 export const ThemeAServicesBlock: React.FC<ServicesBlockProps> = ({ content }) => {
   const section_title = content?.section_title || 'Our Strategic Business Capabilities';
   const section_subtitle = content?.section_subtitle || 'Pioneering excellence across diversified high-growth sectors with benchmark infrastructure.';
-  const rawList = content?.services_list;
-  const services_list = Array.isArray(rawList) && rawList.length > 0 
+  const rawList: any = content?.services_list;
+  const services_list: any[] = Array.isArray(rawList) && rawList.length > 0 
     ? rawList 
-    : typeof rawList === 'string' && rawList.trim().startsWith('[')
-    ? (function() { try { return JSON.parse(rawList); } catch { return defaultServices; } })()
+    : typeof rawList === 'string' && (rawList as string).trim().startsWith('[')
+    ? (function() { try { return JSON.parse(rawList as string); } catch { return defaultServices; } })()
     : defaultServices;
 
   return (
@@ -110,7 +110,7 @@ export const ThemeAServicesBlock: React.FC<ServicesBlockProps> = ({ content }) =
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {services_list.map((service, idx) => {
+          {services_list.map((service: any, idx: number) => {
             const meta = serviceMetaList[idx % serviceMetaList.length];
             const Icon = meta.icon;
 

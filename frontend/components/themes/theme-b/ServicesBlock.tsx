@@ -44,11 +44,11 @@ const defaultServices = [
 export const ThemeBServicesBlock: React.FC<ServicesBlockProps> = ({ content }) => {
   const section_title = content?.section_title || 'Our Strategic Business Capabilities';
   const section_subtitle = content?.section_subtitle || 'Pioneering excellence across diversified high-growth sectors with benchmark infrastructure.';
-  const rawList = content?.services_list;
-  const services_list = Array.isArray(rawList) && rawList.length > 0 
+  const rawList: any = content?.services_list;
+  const services_list: any[] = Array.isArray(rawList) && rawList.length > 0 
     ? rawList 
-    : typeof rawList === 'string' && rawList.trim().startsWith('[')
-    ? (function() { try { return JSON.parse(rawList); } catch { return defaultServices; } })()
+    : typeof rawList === 'string' && (rawList as string).trim().startsWith('[')
+    ? (function() { try { return JSON.parse(rawList as string); } catch { return defaultServices; } })()
     : defaultServices;
 
   const [activeAccordion, setActiveAccordion] = useState<number | null>(0);
@@ -81,7 +81,7 @@ export const ThemeBServicesBlock: React.FC<ServicesBlockProps> = ({ content }) =
 
         {/* Minimalist Accordion List View (Theme B Style) */}
         <div className="divide-y divide-white/10 border-y border-white/10">
-          {services_list.map((service, idx) => {
+          {services_list.map((service: any, idx: number) => {
             const isOpen = activeAccordion === idx;
             const deliverables = deliverablesMap[idx % deliverablesMap.length];
 
