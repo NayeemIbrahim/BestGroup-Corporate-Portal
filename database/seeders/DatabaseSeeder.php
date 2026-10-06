@@ -50,11 +50,11 @@ class DatabaseSeeder extends Seeder
             ['key' => 'site_identity'],
             [
                 'value' => [
-                    'site_name'     => 'Best Group Conglomerate',
-                    'tagline'       => 'Pioneering Excellence Across Real Estate, E-Commerce, Healthcare & Travel',
-                    'support_email' => 'corporate@bestgroup.com',
-                    'phone'         => '+880 1800-BESTGRP',
-                    'headquarters'  => 'Best Group Tower, Gulshan-2, Dhaka 1212',
+                    'site_name'     => 'BEST GROUP',
+                    'tagline'       => 'Excellence in Every Endeavor',
+                    'support_email' => 'info@bestgroupatoz.com',
+                    'phone'         => '01910-203058, 01711-626577',
+                    'headquarters'  => '9th Floor, DBBL Wohid Tower, Motijheel, Dhaka-1000',
                 ],
             ]
         );
@@ -75,9 +75,9 @@ class DatabaseSeeder extends Seeder
         $homePage = Page::updateOrCreate(
             ['slug' => 'home'],
             [
-                'title'            => 'Best Group - Leading Multi-Sector Enterprise',
-                'meta_title'       => 'Best Group | Real Estate, E-Commerce, Pharmacy & Travel',
-                'meta_description' => 'A premier holding group operating industry-leading wings: Best Properties, Best Mall, Best Model Pharmacy, and Best Global Tours.',
+                'title'            => 'BEST GROUP - Excellence in Every Endeavor',
+                'meta_title'       => 'BEST GROUP | Excellence in Every Endeavor',
+                'meta_description' => 'BEST GROUP operates premier listed companies: Best Product International Ltd., Best South City Ltd., Best Commercial & Builders Ltd., Best Model Pharmacy Ltd., and Best International Overseas.',
                 'is_published'     => true,
             ]
         );
@@ -92,14 +92,14 @@ class DatabaseSeeder extends Seeder
             'display_order' => 0,
             'content'       => [
                 'title'                => 'Building the Future of Commerce & Living',
-                'subtitle'             => 'A premier diversified group with benchmark ventures in Real Estate, E-Commerce, Modern Healthcare, and Global Tourism.',
+                'subtitle'             => 'BEST GROUP — Excellence in Every Endeavor. Driving benchmark enterprises across E-Commerce, Real Estate, Construction, Healthcare, and Global Travel.',
                 'background_image_url' => 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop',
-                'button_text'          => 'Explore Business Wings',
-                'button_link'          => '#wings',
+                'button_text'          => 'Explore Listed Companies',
+                'button_link'          => '/our-sister-concern',
             ],
         ]);
 
-        // Block 2: Brands Block
+        // Block 2: Brands Block (All 6 Listed Companies)
         PageBlock::create([
             'page_id'       => $homePage->id,
             'type'          => 'brands',
@@ -107,57 +107,77 @@ class DatabaseSeeder extends Seeder
             'content'       => [
                 'brands_list' => [
                     [
-                        'brand_name'   => 'Best Real Estate',
-                        'logo_url'     => 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=300&auto=format&fit=crop',
-                        'website_link' => '#real-estate',
+                        'brand_name'   => 'Best Group',
+                        'logo_url'     => 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=300&auto=format&fit=crop',
+                        'website_link' => '/about-us',
                     ],
                     [
-                        'brand_name'   => 'Best E-Commerce',
+                        'brand_name'   => 'Best Product International Ltd.',
                         'logo_url'     => 'https://images.unsplash.com/photo-1556742049-0a67e55722c6?q=80&w=300&auto=format&fit=crop',
-                        'website_link' => '#ecommerce',
+                        'website_link' => '/our-sister-concern',
                     ],
                     [
-                        'brand_name'   => 'Best Model Pharmacy',
+                        'brand_name'   => 'Best South City Ltd.',
+                        'logo_url'     => 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=300&auto=format&fit=crop',
+                        'website_link' => '/our-sister-concern',
+                    ],
+                    [
+                        'brand_name'   => 'Best Commercial & Builders Ltd.',
+                        'logo_url'     => 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=300&auto=format&fit=crop',
+                        'website_link' => '/our-sister-concern',
+                    ],
+                    [
+                        'brand_name'   => 'Best Model Pharmacy Ltd.',
                         'logo_url'     => 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=300&auto=format&fit=crop',
-                        'website_link' => '#pharmacy',
+                        'website_link' => '/our-sister-concern',
                     ],
                     [
-                        'brand_name'   => 'Best Travel & Tours',
+                        'brand_name'   => 'Best International Overseas',
                         'logo_url'     => 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=300&auto=format&fit=crop',
-                        'website_link' => '#travel',
+                        'website_link' => '/our-sister-concern',
                     ],
                 ],
             ],
         ]);
 
-        // Block 3: Services Block
+        // Block 3: Services Block (6 Listed Wings)
         PageBlock::create([
             'page_id'       => $homePage->id,
             'type'          => 'services',
             'display_order' => 2,
             'content'       => [
-                'section_title'    => 'Our Strategic Business Wings',
-                'section_subtitle' => 'Pioneering excellence across 4 high-growth industry sectors with unmatched reliability.',
+                'section_title'    => 'Our Listed Companies & Business Wings',
+                'section_subtitle' => 'Six high-impact enterprises unified by one corporate creed: Excellence in Every Endeavor.',
                 'services_list'    => [
                     [
-                        'icon'        => 'BuildingOfficeIcon',
-                        'title'       => 'Luxury & Commercial Real Estate',
-                        'description' => 'Developing state-of-the-art residential condominiums, commercial hubs, and green-certified industrial parks.',
+                        'icon'        => 'ShoppingBagIcon',
+                        'title'       => 'Best Product International Ltd.',
+                        'description' => 'E-Commerce enterprise delivering quality consumer products, digital retail solutions, and nationwide doorstep delivery.',
                     ],
                     [
-                        'icon'        => 'ShoppingBagIcon',
-                        'title'       => 'Omnichannel E-Commerce',
-                        'description' => 'Nationwide consumer retail ecosystem powering tens of thousands of daily direct-to-consumer deliveries.',
+                        'icon'        => 'BuildingOfficeIcon',
+                        'title'       => 'Best South City Ltd.',
+                        'description' => 'Modern residential community development, smart urban planning, and quality housing solutions.',
+                    ],
+                    [
+                        'icon'        => 'WrenchScrewdriverIcon',
+                        'title'       => 'Best Commercial & Builders Ltd.',
+                        'description' => 'Landmark commercial complexes, modern high-rise engineering, and sustainable corporate construction.',
                     ],
                     [
                         'icon'        => 'HeartIcon',
-                        'title'       => 'Best Model Pharmacy Network',
-                        'description' => 'Standardized retail pharmacies guaranteeing 100% authentic medicine, professional consultation, and cold-chain compliance.',
+                        'title'       => 'Best Model Pharmacy Ltd.',
+                        'description' => 'Standardized retail pharmacies guaranteeing 100% genuine medicine, cold-chain storage, and registered clinical pharmacists.',
                     ],
                     [
                         'icon'        => 'GlobeAltIcon',
-                        'title'       => 'Best Travel & Tours',
-                        'description' => 'Luxury business travel, inbound tourism, customized holiday getaways, and worldwide visa & ticketing facilitation.',
+                        'title'       => 'Best International Overseas',
+                        'description' => 'Premier international travel management, corporate aviation, visa consulting, and luxury tourism services.',
+                    ],
+                    [
+                        'icon'        => 'ShieldCheckIcon',
+                        'title'       => 'Best Group (Corporate Desk)',
+                        'description' => 'Central holding conglomerate providing strategic leadership, institutional governance, and multi-sector investment.',
                     ],
                 ],
             ],
@@ -169,10 +189,13 @@ class DatabaseSeeder extends Seeder
             'type'          => 'contact',
             'display_order' => 3,
             'content'       => [
-                'heading'                => 'Connect with Our Corporate Headquarters',
-                'subtext'                => 'Interested in investment partnerships, vendor onboarding, or enterprise services? Send us a direct inquiry.',
-                'form_email_destination' => 'corporate@bestgroup.com',
+                'heading'                => 'Connect with BEST GROUP Corporate Headquarters',
+                'subtext'                => '9th Floor, DBBL Wohid Tower, Motijheel, Dhaka-1000 | Phone: 01910-203058, 01711-626577',
+                'form_email_destination' => 'info@bestgroupatoz.com',
             ],
         ]);
+
+        // 5. Seed Corporate Pages
+        $this->call(PageSeeder::class);
     }
 }
