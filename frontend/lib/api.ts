@@ -49,5 +49,10 @@ export async function getPageData(slug: string = 'home'): Promise<CmsResponseDat
     data = await tryFetch(publicFallbackUrl);
   }
 
+  // 3. If failed and running in local dev, try local Laravel server at 127.0.0.1:8000
+  if (!data && API_BASE_URL !== 'http://127.0.0.1:8000/api/v1') {
+    data = await tryFetch('http://127.0.0.1:8000/api/v1');
+  }
+
   return data;
 }

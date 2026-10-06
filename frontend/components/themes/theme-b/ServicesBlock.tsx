@@ -20,29 +20,39 @@ interface ServicesBlockProps {
 
 const defaultServices = [
   {
-    icon: 'Building2',
-    title: 'Luxury & Commercial Real Estate',
-    description: 'Developing state-of-the-art residential condominiums, commercial hubs, and green-certified industrial parks.',
+    icon: 'ShieldCheck',
+    title: 'Best Group (Apex Holding & Governance)',
+    description: 'Corporate leadership, strategic oversight, and multi-sector investment management upholding Excellence in Every Endeavor.',
   },
   {
     icon: 'ShoppingBag',
-    title: 'Omnichannel E-Commerce',
-    description: 'Nationwide consumer retail ecosystem powering tens of thousands of daily direct-to-consumer deliveries.',
+    title: 'Best Product International Ltd. (E-Commerce)',
+    description: 'Premier digital retail, automated supply chain fulfillment, and direct-to-consumer delivery network.',
+  },
+  {
+    icon: 'Building2',
+    title: 'Best South City Ltd. (Urban Real Estate)',
+    description: 'Master-planned residential developments, green smart townships, and sustainable community living environments.',
+  },
+  {
+    icon: 'Layers',
+    title: 'Best Commercial & Builders Ltd. (Construction)',
+    description: 'High-rise corporate towers, heavy structural engineering, and institutional commercial complexes.',
   },
   {
     icon: 'HeartPulse',
-    title: 'Best Model Pharmacy Network',
-    description: 'Standardized retail pharmacies guaranteeing 100% authentic medicine, professional consultation, and cold-chain compliance.',
+    title: 'Best Model Pharmacy Ltd. (Healthcare Chain)',
+    description: 'Standardized retail pharmacies guaranteeing 100% authentic medicine, licensed pharmacist care, and cold-chain compliance.',
   },
   {
     icon: 'Plane',
-    title: 'Best Travel & Tours',
-    description: 'Luxury business travel, inbound tourism, customized holiday getaways, and worldwide visa & ticketing facilitation.',
+    title: 'Best International Overseas (Travel & Tours)',
+    description: 'Luxury executive corporate travel, global tour packages, VIP aviation ticketing, and seamless worldwide visa facilitation.',
   },
 ];
 
 export const ThemeBServicesBlock: React.FC<ServicesBlockProps> = ({ content }) => {
-  const section_title = content?.section_title || 'Our Strategic Business Capabilities';
+  const section_title = content?.section_title || 'Enterprise Capabilities & Listed Wings';
   const section_subtitle = content?.section_subtitle || 'Pioneering excellence across diversified high-growth sectors with benchmark infrastructure.';
   const rawList: any = content?.services_list;
   const services_list: any[] = Array.isArray(rawList) && rawList.length > 0 
@@ -54,10 +64,12 @@ export const ThemeBServicesBlock: React.FC<ServicesBlockProps> = ({ content }) =
   const [activeAccordion, setActiveAccordion] = useState<number | null>(0);
 
   const deliverablesMap = [
-    ['Architectural Design & LEED Certification', 'Smart Residential Automation', 'Prime Commercial Asset Management'],
-    ['Nationwide Same-Day Dispatch Logistics', 'Automated Cold-Chain Warehousing', 'Omnichannel Customer Experience'],
-    ['100% Authentic Pharmaceutical Sourcing', '24/7 Licensed Pharmacist Consultation', 'Temperature-Regulated Logistics'],
-    ['Customized Executive Corporate Itineraries', 'VIP Airport & Visa Facilitation', 'Bespoke Luxury Global Getaways'],
+    ['Executive Portfolio Governance', 'ESG & Corporate Compliance', 'Cross-Wing Strategic Synergy'],
+    ['Nationwide Same-Day Dispatch', 'Smart Cloud Order Routing', 'Secure B2B & B2C Gateways'],
+    ['Master Town Planning & Architecture', 'Eco-Friendly Gated Communities', 'Smart Living Automation'],
+    ['Structural Engineering & High-Rises', 'LEED-Certified Green Construction', 'Turnkey Commercial Assets'],
+    ['100% Authentic DGDA-Certified Supply', '24/7 Professional Pharmacist Guidance', 'Strict Cold-Chain Refrigeration'],
+    ['Executive Corporate Itineraries', 'Hajj, Umrah & Bespoke World Tours', 'Worldwide Visa & Flight Concierge'],
   ];
 
   return (

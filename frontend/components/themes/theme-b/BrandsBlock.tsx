@@ -21,24 +21,34 @@ interface BrandsBlockProps {
 
 const defaultBrands = [
   {
-    brand_name: 'Best Real Estate',
-    logo_url: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=300&auto=format&fit=crop',
-    website_link: '#real-estate',
+    brand_name: 'Best Group',
+    logo_url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop',
+    website_link: '/our-sister-concern#best-group',
   },
   {
-    brand_name: 'Best E-Commerce',
-    logo_url: 'https://images.unsplash.com/photo-1556742049-0a67e55722c6?q=80&w=300&auto=format&fit=crop',
-    website_link: '#ecommerce',
+    brand_name: 'Best Product International Ltd.',
+    logo_url: 'https://images.unsplash.com/photo-1556742049-0a67e55722c6?q=80&w=600&auto=format&fit=crop',
+    website_link: '/our-sister-concern#best-product',
   },
   {
-    brand_name: 'Best Model Pharmacy',
-    logo_url: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=300&auto=format&fit=crop',
-    website_link: '#pharmacy',
+    brand_name: 'Best South City Ltd.',
+    logo_url: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=600&auto=format&fit=crop',
+    website_link: '/our-sister-concern#best-south-city',
   },
   {
-    brand_name: 'Best Travel & Tours',
-    logo_url: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=300&auto=format&fit=crop',
-    website_link: '#travel',
+    brand_name: 'Best Commercial & Builders Ltd.',
+    logo_url: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=600&auto=format&fit=crop',
+    website_link: '/our-sister-concern#best-commercial-builders',
+  },
+  {
+    brand_name: 'Best Model Pharmacy Ltd.',
+    logo_url: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=600&auto=format&fit=crop',
+    website_link: '/our-sister-concern#best-model-pharmacy',
+  },
+  {
+    brand_name: 'Best International Overseas',
+    logo_url: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=600&auto=format&fit=crop',
+    website_link: '/our-sister-concern#best-international-overseas',
   },
 ];
 
@@ -53,32 +63,46 @@ export const ThemeBBrandsBlock: React.FC<BrandsBlockProps> = ({ content }) => {
 
   const wingDetails = [
     {
-      code: 'PROP-01',
-      tagline: 'Mega-Hub Commercial & Smart Residencies',
-      metric: '12M+ SQFT',
-      metricLabel: 'Delivered',
-      category: 'Real Estate Development',
+      code: 'CORP-01',
+      tagline: 'Excellence in Every Endeavor — Parent Holding & Governance',
+      metric: 'EST. GROUP',
+      metricLabel: 'Apex Governance',
+      category: 'Conglomerate Holding',
     },
     {
       code: 'ECOM-02',
-      tagline: 'Omnichannel Digital Retail & Logistics Hub',
+      tagline: 'Premier E-Commerce Infrastructure & Consumer Retail',
       metric: '50K+ DAILY',
       metricLabel: 'Orders Fulfilled',
-      category: 'Consumer Commerce',
+      category: 'E-Commerce & Logistics',
     },
     {
-      code: 'PHAR-03',
-      tagline: 'Standardized Cold-Chain Pharmacy Network',
-      metric: '150+ OUTLETS',
-      metricLabel: 'Nationwide Chain',
-      category: 'Healthcare & Wellness',
+      code: 'PROP-03',
+      tagline: 'Master-Planned Urban Communities & Modern Living',
+      metric: '10M+ SQFT',
+      metricLabel: 'Townships Developed',
+      category: 'Urban Real Estate',
     },
     {
-      code: 'TOUR-04',
-      tagline: 'Luxury Corporate & Leisure Worldwide Concierge',
-      metric: '40+ GLOBAL',
+      code: 'BLD-04',
+      tagline: 'High-Rise Commercial Towers & Infrastructure Engineering',
+      metric: '15+ TOWERS',
+      metricLabel: 'Completed Projects',
+      category: 'Commercial Construction',
+    },
+    {
+      code: 'PHAR-05',
+      tagline: 'Standardized Model Pharmacy Network & Authentic Healthcare',
+      metric: '100% GENUINE',
+      metricLabel: 'DGDA Certified Chain',
+      category: 'Healthcare & Retail',
+    },
+    {
+      code: 'TRV-06',
+      tagline: 'Global Mobility, Executive Corporate Travel & Aviation Tours',
+      metric: '45+ GLOBAL',
       metricLabel: 'Destinations',
-      category: 'Aviation & Tourism',
+      category: 'Travel & Global Tours',
     },
   ];
 
@@ -91,20 +115,24 @@ export const ThemeBBrandsBlock: React.FC<BrandsBlockProps> = ({ content }) => {
           transition={{ repeat: Infinity, ease: 'linear', duration: 25 }}
           className="inline-flex items-center gap-12 font-mono text-xs uppercase tracking-widest text-gray-400"
         >
-          {Array(8)
+          {Array(6)
             .fill(0)
             .map((_, i) => (
               <div key={i} className="flex items-center gap-8">
                 <span className="text-emerald-400 flex items-center gap-2">
                   <Zap className="w-3.5 h-3.5 fill-emerald-400" />
-                  <span>BEST REAL ESTATE</span>
+                  <span>BEST GROUP</span>
                 </span>
                 <span className="text-gray-600">•</span>
-                <span className="text-teal-400">BEST E-COMMERCE</span>
+                <span className="text-teal-400">BEST PRODUCT INTERNATIONAL LTD.</span>
                 <span className="text-gray-600">•</span>
-                <span className="text-cyan-400">BEST MODEL PHARMACY</span>
+                <span className="text-cyan-400">BEST SOUTH CITY LTD.</span>
                 <span className="text-gray-600">•</span>
-                <span className="text-indigo-400">BEST TRAVEL & TOURS</span>
+                <span className="text-blue-400">BEST COMMERCIAL & BUILDERS LTD.</span>
+                <span className="text-gray-600">•</span>
+                <span className="text-purple-400">BEST MODEL PHARMACY LTD.</span>
+                <span className="text-gray-600">•</span>
+                <span className="text-amber-400">BEST INTERNATIONAL OVERSEAS</span>
                 <span className="text-gray-600">•</span>
               </div>
             ))}
@@ -120,11 +148,11 @@ export const ThemeBBrandsBlock: React.FC<BrandsBlockProps> = ({ content }) => {
               <span>02 // ECOSYSTEM PORTFOLIO</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white">
-              The 4 Ventures of BestGroup
+              6 Listed Companies &amp; Business Wings
             </h2>
           </div>
           <p className="text-gray-400 font-mono text-xs max-w-sm mt-4 md:mt-0 leading-relaxed">
-            Multi-sector horizontal integration delivering high-precision services across nationwide infrastructure.
+            Excellence in Every Endeavor across Holding Governance, E-Commerce, Real Estate, Commercial Construction, Model Pharmacy, and Global Travel.
           </p>
         </div>
 

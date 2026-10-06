@@ -126,11 +126,12 @@ export const ThemeBContactBlock: React.FC<ContactBlockProps> = ({ content }) => 
                     onChange={(e) => setFormData({ ...formData, wing: e.target.value })}
                     className="w-full px-5 py-4 rounded-2xl bg-gray-950 border border-white/10 text-white text-sm focus:outline-none focus:border-emerald-500 transition-colors font-mono"
                   >
-                    <option>Best Real Estate (Commercial & Residential)</option>
-                    <option>Best E-Commerce (Logistics & Marketplace)</option>
-                    <option>Best Model Pharmacy (Healthcare Chain)</option>
-                    <option>Best Travel & Tours (Corporate & Luxury)</option>
-                    <option>Group Corporate Investments & M&A</option>
+                    <option>Best Group (Holding & Governance)</option>
+                    <option>Best Product International Ltd. (E-Commerce)</option>
+                    <option>Best South City Ltd. (Real Estate)</option>
+                    <option>Best Commercial & Builders Ltd. (Commercial Construction)</option>
+                    <option>Best Model Pharmacy Ltd. (Healthcare Chain)</option>
+                    <option>Best International Overseas (Travel & Tours)</option>
                   </select>
                 </div>
 
@@ -167,11 +168,11 @@ export const ThemeBContactBlock: React.FC<ContactBlockProps> = ({ content }) => 
             </div>
             <div className="flex items-center gap-2">
               <Phone className="w-4 h-4 text-emerald-400" />
-              <span>+880 1800-BESTGRP</span>
+              <span>01910-203058 / 01711-626577</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-emerald-400" />
-              <span>Gulshan Avenue Executive Floors</span>
+              <span>9th Floor, DBBL Wohid Tower, Motijheel, Dhaka-1000</span>
             </div>
           </div>
         </div>

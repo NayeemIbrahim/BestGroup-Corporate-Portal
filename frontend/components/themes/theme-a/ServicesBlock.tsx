@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ServicesBlockContent } from '@/types/cms';
 import {
@@ -54,24 +55,34 @@ const serviceMetaList = [
 
 const defaultServices = [
   {
-    icon: 'Building2',
-    title: 'Luxury & Commercial Real Estate',
-    description: 'Developing state-of-the-art residential condominiums, commercial hubs, and green-certified industrial parks.',
+    icon: 'ShoppingBag',
+    title: 'Best Product International Ltd.',
+    description: 'E-Commerce enterprise delivering verified consumer products, digital retail solutions, and nationwide doorstep delivery.',
   },
   {
-    icon: 'ShoppingBag',
-    title: 'Omnichannel E-Commerce',
-    description: 'Nationwide consumer retail ecosystem powering tens of thousands of daily direct-to-consumer deliveries.',
+    icon: 'Building',
+    title: 'Best South City Ltd.',
+    description: 'Master-planned residential communities, modern urban housing, and planned green living spaces.',
+  },
+  {
+    icon: 'Building2',
+    title: 'Best Commercial & Builders Ltd.',
+    description: 'Landmark commercial towers, high-rise architectural engineering, and corporate construction contracting.',
   },
   {
     icon: 'HeartPulse',
-    title: 'Best Model Pharmacy Network',
-    description: 'Standardized retail pharmacies guaranteeing 100% authentic medicine, professional consultation, and cold-chain compliance.',
+    title: 'Best Model Pharmacy Ltd.',
+    description: 'Standardized retail pharmacies guaranteeing 100% genuine medicine, clinical consultation, and cold-chain compliance.',
   },
   {
     icon: 'Plane',
-    title: 'Best Travel & Tours',
-    description: 'Luxury business travel, inbound tourism, customized holiday getaways, and worldwide visa & ticketing facilitation.',
+    title: 'Best International Overseas',
+    description: 'Luxury business travel, inbound/outbound tourism, air ticketing, visa consulting, and Hajj & Umrah services.',
+  },
+  {
+    icon: 'ShieldCheck',
+    title: 'Best Group (Corporate Holding)',
+    description: 'Central holding conglomerate steering strategic investments, ethics, governance, and multi-sector synergies.',
   },
 ];
 
@@ -117,9 +128,10 @@ export const ThemeAServicesBlock: React.FC<ServicesBlockProps> = ({ content }) =
             return (
               <motion.div
                 key={idx}
-                initial={{ opacity: 0, y: 25 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: '-50px' }}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className={`group relative p-8 sm:p-10 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900/90 to-slate-950 border border-slate-800/90 ${meta.border} transition-all duration-300 hover:shadow-2xl hover:shadow-black/70 hover:-translate-y-1`}
               >
@@ -152,13 +164,13 @@ export const ThemeAServicesBlock: React.FC<ServicesBlockProps> = ({ content }) =
                         <span>ISO 9001:2015 Compliant SLA</span>
                       </div>
 
-                      <a
-                        href="#contact"
+                      <Link
+                        href="/contact"
                         className="text-red-400 font-semibold flex items-center gap-1 group-hover:translate-x-1 transition-transform"
                       >
                         <span>Corporate Desk</span>
                         <ArrowRight className="w-3.5 h-3.5" />
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

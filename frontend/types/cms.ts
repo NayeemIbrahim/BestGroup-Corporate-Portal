@@ -34,16 +34,45 @@ export interface ContactBlockContent {
   form_email_destination: string;
 }
 
+export interface RichTextBlockContent {
+  title?: string;
+  subtitle?: string;
+  body: string;
+}
+
+export interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+export interface FaqBlockContent {
+  section_title?: string;
+  section_subtitle?: string;
+  faqs?: FaqItem[];
+}
+
+export interface ChairmanMessageBlockContent {
+  title?: string;
+  chairman_name?: string;
+  chairman_title?: string;
+  motto?: string;
+  chairman_image_url?: string;
+  message?: string;
+}
+
 export type BlockContent =
   | HeroBlockContent
   | BrandsBlockContent
   | ServicesBlockContent
   | ContactBlockContent
+  | RichTextBlockContent
+  | FaqBlockContent
+  | ChairmanMessageBlockContent
   | Record<string, any>;
 
 export interface BlockData {
   id: number;
-  type: 'hero' | 'brands' | 'services' | 'contact' | string;
+  type: 'hero' | 'brands' | 'services' | 'contact' | 'rich_text' | 'faq' | 'chairman_message' | string;
   display_order: number;
   content: BlockContent;
 }

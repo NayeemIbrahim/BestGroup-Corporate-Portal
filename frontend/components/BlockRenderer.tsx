@@ -6,6 +6,9 @@ import { ThemeAHeroBlock } from '@/components/themes/theme-a/HeroBlock';
 import { ThemeABrandsBlock } from '@/components/themes/theme-a/BrandsBlock';
 import { ThemeAServicesBlock } from '@/components/themes/theme-a/ServicesBlock';
 import { ThemeAContactBlock } from '@/components/themes/theme-a/ContactBlock';
+import { ThemeARichTextBlock } from '@/components/themes/theme-a/RichTextBlock';
+import { ThemeAFaqBlock } from '@/components/themes/theme-a/FaqBlock';
+import { ThemeAChairmanMessageBlock } from '@/components/themes/theme-a/ChairmanMessageBlock';
 
 // Theme B Blocks (Modern Clean Glass)
 import { ThemeBHeroBlock } from '@/components/themes/theme-b/HeroBlock';
@@ -28,12 +31,22 @@ const BLOCK_REGISTRY: Record<string, Record<string, React.ComponentType<{ conten
     brands: ThemeABrandsBlock,
     services: ThemeAServicesBlock,
     contact: ThemeAContactBlock,
+    rich_text: ThemeARichTextBlock,
+    richtext: ThemeARichTextBlock,
+    faq: ThemeAFaqBlock,
+    faqs: ThemeAFaqBlock,
+    chairman_message: ThemeAChairmanMessageBlock,
   },
   'theme-b': {
     hero: ThemeBHeroBlock,
     brands: ThemeBBrandsBlock,
     services: ThemeBServicesBlock,
     contact: ThemeBContactBlock,
+    rich_text: ThemeARichTextBlock,
+    richtext: ThemeARichTextBlock,
+    faq: ThemeAFaqBlock,
+    faqs: ThemeAFaqBlock,
+    chairman_message: ThemeAChairmanMessageBlock,
   },
 };
 

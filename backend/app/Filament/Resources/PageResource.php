@@ -149,6 +149,112 @@ class PageResource extends Resource
         ];
     }
 
+    private static function richTextBlockSchema(): array
+    {
+        return [
+            Forms\Components\TextInput::make('title')
+                ->label('Section Heading')
+                ->maxLength(255)
+                ->placeholder('e.g., About BestGroup or Privacy Policy'),
+
+            Forms\Components\TextInput::make('subtitle')
+                ->label('Subheading / Tagline')
+                ->maxLength(255)
+                ->placeholder('Optional explanatory subtitle'),
+
+            Forms\Components\RichEditor::make('body')
+                ->label('Rich Text Content')
+                ->required()
+                ->toolbarButtons([
+                    'blockquote',
+                    'bold',
+                    'bulletList',
+                    'h2',
+                    'h3',
+                    'italic',
+                    'link',
+                    'orderedList',
+                    'redo',
+                    'strike',
+                    'underline',
+                    'undo',
+                ]),
+        ];
+    }
+
+    private static function faqBlockSchema(): array
+    {
+        return [
+            Forms\Components\TextInput::make('section_title')
+                ->label('Section Title')
+                ->default('Frequently Asked Questions')
+                ->required()
+                ->maxLength(255),
+
+            Forms\Components\TextInput::make('section_subtitle')
+                ->label('Section Subtitle')
+                ->default('Find answers to common questions about our corporate governance, investment, and ventures.')
+                ->maxLength(255),
+
+            Forms\Components\Repeater::make('faqs')
+                ->label('FAQ Items')
+                ->schema([
+                    Forms\Components\TextInput::make('question')
+                        ->label('Question')
+                        ->required(),
+
+                    Forms\Components\Textarea::make('answer')
+                        ->label('Answer')
+                        ->rows(3)
+                        ->required(),
+                ])
+                ->columns(1)
+                ->addActionLabel('Add Question & Answer')
+                ->defaultItems(1)
+                ->reorderable()
+                ->collapsible(),
+        ];
+    }
+
+    private static function chairmanMessageBlockSchema(): array
+    {
+        return [
+            Forms\Components\TextInput::make('title')
+                ->label('Section Title')
+                ->default('Chairman’s Message')
+                ->required()
+                ->maxLength(255),
+
+            Forms\Components\TextInput::make('chairman_name')
+                ->label('Chairman Name')
+                ->default('M.A. Mizanur Rahman')
+                ->required()
+                ->maxLength(255),
+
+            Forms\Components\TextInput::make('chairman_title')
+                ->label('Designation / Title')
+                ->default('Chairman, Best Group')
+                ->required()
+                ->maxLength(255),
+
+            Forms\Components\TextInput::make('motto')
+                ->label('Chairman Motto / Quote')
+                ->default('“Excellence in Every Endeavor.”')
+                ->maxLength(255),
+
+            Forms\Components\FileUpload::make('chairman_image_url')
+                ->label('Chairman Portrait Photo')
+                ->image()
+                ->directory('blocks/chairman')
+                ->helperText('Upload portrait image (or default /images/chairman.jpg is used)'),
+
+            Forms\Components\RichEditor::make('message')
+                ->label('Chairman Message Content')
+                ->required()
+                ->default('At Best Group, we are committed to excellence, integrity, innovation, and creating lasting value for our customers and communities. Through our diverse businesses, we continuously strive to deliver quality, build trust, and create new opportunities for a better future.'),
+        ];
+    }
+
     // -------------------------------------------------------------------------
     // Form Definition
     // -------------------------------------------------------------------------
@@ -201,10 +307,13 @@ class PageResource extends Resource
                                     ->label('Content Blocks')
                                     ->itemLabel(function (array $state): string {
                                         $labels = [
-                                            'hero'     => '🎯 Hero Block',
-                                            'brands'   => '🏢 Brands Block',
-                                            'services' => '⚙️  Services Block',
-                                            'contact'  => '📩 Contact Block',
+                                            'hero'             => '🎯 Hero Block',
+                                            'brands'           => '🏢 Brands Block',
+                                            'services'         => '⚙️ Services Block',
+                                            'contact'          => '📩 Contact Block',
+                                            'rich_text'        => '📝 Rich Text Block',
+                                            'faq'              => '❓ FAQ Block',
+                                            'chairman_message' => '👤 Chairman’s Message Block',
                                         ];
                                         return $labels[$state['type'] ?? ''] ?? '📦 New Block';
                                     })
@@ -217,10 +326,13 @@ class PageResource extends Resource
                                         Forms\Components\Select::make('type')
                                             ->label('Block Type')
                                             ->options([
-                                                'hero'     => '🎯 Hero Block',
-                                                'brands'   => '🏢 Brands Block',
-                                                'services' => '⚙️ Services Block',
-                                                'contact'  => '📩 Contact Block',
+                                                'hero'             => '🎯 Hero Block',
+                                                'brands'           => '🏢 Brands Block',
+                                                'services'         => '⚙️ Services Block',
+                                                'contact'          => '📩 Contact Block',
+                                                'rich_text'        => '📝 Rich Text Block',
+                                                'faq'              => '❓ FAQ Block',
+                                                'chairman_message' => '👤 Chairman’s Message Block',
                                             ])
                                             ->required()
                                             ->live()
@@ -234,11 +346,14 @@ class PageResource extends Resource
                                         Forms\Components\Group::make()
                                             ->statePath('content')
                                             ->schema(fn (Get $get): array => match ($get('type')) {
-                                                'hero'     => static::heroBlockSchema(),
-                                                'brands'   => static::brandsBlockSchema(),
-                                                'services' => static::servicesBlockSchema(),
-                                                'contact'  => static::contactBlockSchema(),
-                                                default    => [],
+                                                'hero'             => static::heroBlockSchema(),
+                                                'brands'           => static::brandsBlockSchema(),
+                                                'services'         => static::servicesBlockSchema(),
+                                                'contact'          => static::contactBlockSchema(),
+                                                'rich_text'        => static::richTextBlockSchema(),
+                                                'faq'              => static::faqBlockSchema(),
+                                                'chairman_message' => static::chairmanMessageBlockSchema(),
+                                                default            => [],
                                             }),
                                     ]),
                             ]),

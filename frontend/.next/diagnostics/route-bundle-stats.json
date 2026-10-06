@@ -1,10 +1,11 @@
 [
   {
     "route": "/",
-    "firstLoadUncompressedJsBytes": 686021,
+    "firstLoadUncompressedJsBytes": 728163,
     "firstLoadChunkPaths": [
       ".next\\static\\chunks\\0h2qsuyze9ds1.js",
-      ".next\\static\\chunks\\24bg6wq_ppglk.js",
+      ".next\\static\\chunks\\22i43cg4l4-dq.js",
+      ".next\\static\\chunks\\13tb0gamxaqt7.js",
       ".next\\static\\chunks\\310vm2bl3xxpt.js",
       ".next\\static\\chunks\\2mmpezlrfmbu5.js",
       ".next\\static\\chunks\\0bma92pht_c97.js",
@@ -14,10 +15,11 @@
   },
   {
     "route": "/[slug]",
-    "firstLoadUncompressedJsBytes": 686021,
+    "firstLoadUncompressedJsBytes": 728163,
     "firstLoadChunkPaths": [
       ".next\\static\\chunks\\0h2qsuyze9ds1.js",
-      ".next\\static\\chunks\\24bg6wq_ppglk.js",
+      ".next\\static\\chunks\\22i43cg4l4-dq.js",
+      ".next\\static\\chunks\\13tb0gamxaqt7.js",
       ".next\\static\\chunks\\310vm2bl3xxpt.js",
       ".next\\static\\chunks\\2mmpezlrfmbu5.js",
       ".next\\static\\chunks\\0bma92pht_c97.js",
@@ -27,10 +29,10 @@
   },
   {
     "route": "/investor-portal",
-    "firstLoadUncompressedJsBytes": 462571,
+    "firstLoadUncompressedJsBytes": 474136,
     "firstLoadChunkPaths": [
       ".next\\static\\chunks\\0h2qsuyze9ds1.js",
-      ".next\\static\\chunks\\1hyb01-9ft9o1.js",
+      ".next\\static\\chunks\\29i_wfr2cute_.js",
       ".next\\static\\chunks\\310vm2bl3xxpt.js",
       ".next\\static\\chunks\\2mmpezlrfmbu5.js",
       ".next\\static\\chunks\\0bma92pht_c97.js",

@@ -88,7 +88,7 @@ export const ThemeBHeroBlock: React.FC<HeroBlockProps> = ({ content }) => {
             {/* Micro Indicator Bar */}
             <div className="grid grid-cols-3 gap-4 mt-14 pt-8 border-t border-white/10 max-w-xl">
               <div>
-                <div className="text-2xl font-mono font-bold text-emerald-400">04 Wings</div>
+                <div className="text-2xl font-mono font-bold text-emerald-400">06 Wings</div>
                 <div className="text-xs text-gray-400 font-mono mt-1">Multi-Sector Matrix</div>
               </div>
               <div>

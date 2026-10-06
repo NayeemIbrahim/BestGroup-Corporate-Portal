@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { BrandsBlockContent } from '@/types/cms';
 import {
@@ -9,10 +10,12 @@ import {
   ArrowRight,
   ShieldCheck,
   Building,
+  Building2,
   ShoppingBag,
   HeartPulse,
   Plane,
-  Sparkles
+  Sparkles,
+  Award
 } from 'lucide-react';
 
 interface BrandsBlockProps {
@@ -29,6 +32,49 @@ const wingDetailsMap: Record<
     highlights: string[];
   }
 > = {
+  'Best Group': {
+    icon: ShieldCheck,
+    accentColor: 'from-red-600 to-amber-500',
+    borderColor: 'group-hover:border-red-500/50',
+    tagline: 'Excellence in Every Endeavor',
+    highlights: ['Group Holding Entity', 'Central Corporate Governance', 'Nationwide Multi-Sector Portfolio'],
+  },
+  'Best Product International Ltd.': {
+    icon: ShoppingBag,
+    accentColor: 'from-blue-600 to-blue-500',
+    borderColor: 'group-hover:border-blue-500/50',
+    tagline: 'Omnichannel Digital Retail & Doorstep Logistics',
+    highlights: ['Nationwide Logistics Fleet', 'Authentic Quality Goods', '99.8% On-Time Fulfillment'],
+  },
+  'Best South City Ltd.': {
+    icon: Building,
+    accentColor: 'from-amber-600 to-amber-500',
+    borderColor: 'group-hover:border-amber-500/50',
+    tagline: 'Smart Residential Communities & Modern Living',
+    highlights: ['Planned Green Living', 'Strategic Suburban Locations', 'Modern Civic Infrastructure'],
+  },
+  'Best Commercial & Builders Ltd.': {
+    icon: Building2,
+    accentColor: 'from-orange-600 to-orange-500',
+    borderColor: 'group-hover:border-orange-500/50',
+    tagline: 'Landmark Corporate Towers & High-Rise Engineering',
+    highlights: ['Grade-A Commercial Hubs', 'LEED Engineering Precision', 'High-Spec Civil Construction'],
+  },
+  'Best Model Pharmacy Ltd.': {
+    icon: HeartPulse,
+    accentColor: 'from-emerald-600 to-emerald-500',
+    borderColor: 'group-hover:border-emerald-500/50',
+    tagline: 'Standardized Cold-Chain Pharmaceutical Network',
+    highlights: ['100% Genuine Medicine Guarantee', 'Clinical Pharmacist Support', 'Cold-Chain Biologics Storage'],
+  },
+  'Best International Overseas': {
+    icon: Plane,
+    accentColor: 'from-rose-600 to-rose-500',
+    borderColor: 'group-hover:border-rose-500/50',
+    tagline: 'Bespoke Travel Management & Overseas Mobility',
+    highlights: ['Worldwide Air Ticketing', 'Hajj, Umrah & Luxury Tourism', 'Executive Travel Concierge'],
+  },
+  // Legacy aliases for backward compatibility
   'Best Real Estate': {
     icon: Building,
     accentColor: 'from-amber-600 to-amber-500',
@@ -61,24 +107,34 @@ const wingDetailsMap: Record<
 
 const defaultBrands = [
   {
-    brand_name: 'Best Real Estate',
-    logo_url: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?q=80&w=300&auto=format&fit=crop',
-    website_link: '#real-estate',
+    brand_name: 'Best Group',
+    logo_url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=300&auto=format&fit=crop',
+    website_link: '/about-us',
   },
   {
-    brand_name: 'Best E-Commerce',
+    brand_name: 'Best Product International Ltd.',
     logo_url: 'https://images.unsplash.com/photo-1556742049-0a67e55722c6?q=80&w=300&auto=format&fit=crop',
-    website_link: '#ecommerce',
+    website_link: '/our-sister-concern#ecommerce',
   },
   {
-    brand_name: 'Best Model Pharmacy',
+    brand_name: 'Best South City Ltd.',
+    logo_url: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=300&auto=format&fit=crop',
+    website_link: '/our-sister-concern#real-estate',
+  },
+  {
+    brand_name: 'Best Commercial & Builders Ltd.',
+    logo_url: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=300&auto=format&fit=crop',
+    website_link: '/our-sister-concern#construction',
+  },
+  {
+    brand_name: 'Best Model Pharmacy Ltd.',
     logo_url: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=300&auto=format&fit=crop',
-    website_link: '#pharmacy',
+    website_link: '/our-sister-concern#pharmacy',
   },
   {
-    brand_name: 'Best Travel & Tours',
+    brand_name: 'Best International Overseas',
     logo_url: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=300&auto=format&fit=crop',
-    website_link: '#travel',
+    website_link: '/our-sister-concern#travel',
   },
 ];
 
@@ -209,12 +265,12 @@ export const ThemeABrandsBlock: React.FC<BrandsBlockProps> = ({ content }) => {
               </p>
             </div>
           </div>
-          <a
-            href="#contact"
+          <Link
+            href="/terms-of-engagement"
             className="px-6 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs font-bold uppercase tracking-wider text-white shrink-0 transition-colors"
           >
             Corporate Governance
-          </a>
+          </Link>
         </div>
       </div>
     </section>

@@ -43,8 +43,8 @@ export default async function DynamicSlugPage({ params }: PageProps) {
       {/* Dynamic Navbar */}
       <Navbar theme={theme} settings={settings} />
 
-      {/* Dynamic Block Builder Engine */}
-      <main className="flex-1 w-full">
+      {/* Dynamic Block Builder Engine - offset below fixed navbar */}
+      <main className="flex-1 w-full pt-[112px] lg:pt-[124px]">
         <BlockRenderer active_theme={activeThemeSlug} blocks={blocks || page.blocks || []} />
       </main>
 

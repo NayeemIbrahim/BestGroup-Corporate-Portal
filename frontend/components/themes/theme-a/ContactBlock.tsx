@@ -14,7 +14,9 @@ import {
   ShieldCheck,
   Building2,
   Headphones,
-  Sparkles
+  Sparkles,
+  ArrowRight,
+  ExternalLink
 } from 'lucide-react';
 
 interface ContactBlockProps {
@@ -23,9 +25,9 @@ interface ContactBlockProps {
 
 export const ThemeAContactBlock: React.FC<ContactBlockProps> = ({ content }) => {
   const {
-    heading = 'Connect with Our Corporate Headquarters',
-    subtext = 'Interested in investment partnerships, vendor onboarding, or enterprise services? Send us a direct inquiry.',
-    form_email_destination = 'corporate@bestgroup.com',
+    heading = 'Connect with BEST GROUP Corporate Headquarters',
+    subtext = 'Direct liaison desk for institutional partnerships, commercial real estate leasing, vendor onboarding, or executive inquiries across our 6 listed companies.',
+    form_email_destination = 'info@bestgroupatoz.com',
   } = content || {};
 
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -33,7 +35,7 @@ export const ThemeAContactBlock: React.FC<ContactBlockProps> = ({ content }) => 
     name: '',
     email: '',
     phone: '',
-    wing: 'Best Real Estate (Commercial & Residential)',
+    wing: 'BEST GROUP (Corporate Holding & Governance)',
     subject: '',
     message: '',
   });
@@ -41,93 +43,124 @@ export const ThemeAContactBlock: React.FC<ContactBlockProps> = ({ content }) => 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setFormSubmitted(true);
-    setTimeout(() => {
-      // simulate receipt
-    }, 1000);
   };
 
   return (
-    <section id="contact" className="py-28 bg-slate-900 border-t border-slate-800 text-white relative overflow-hidden">
+    <section id="contact" className="py-20 lg:py-24 bg-slate-950 border-t border-slate-800/80 text-white relative overflow-hidden">
       {/* Background Accent Gradients */}
-      <div className="absolute top-1/2 -left-48 w-96 h-96 bg-red-600/10 blur-[130px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-amber-500/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/3 -left-48 w-96 h-96 bg-red-600/10 blur-[140px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-10 right-0 w-96 h-96 bg-amber-500/10 blur-[130px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-start">
           {/* Left Column: Corporate Liaison Details (5 cols) */}
           <motion.div
             initial={{ opacity: 0, x: -25 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="lg:col-span-5"
+            className="lg:col-span-5 space-y-6"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-600/10 border border-red-500/20 text-red-400 text-xs font-bold uppercase tracking-wider mb-4">
-              <Building2 className="w-3.5 h-3.5" />
-              <span>Headquarters Liaison Desk</span>
+            <div>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-600/15 border border-red-500/30 text-red-400 text-xs font-bold uppercase tracking-wider mb-4 shadow-sm">
+                <Building2 className="w-3.5 h-3.5 text-red-400" />
+                <span>Executive Corporate Liaison</span>
+              </div>
+
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-[1.15]">
+                {heading}
+              </h2>
+
+              <p className="mt-4 text-slate-300 text-base leading-relaxed font-normal">
+                {subtext}
+              </p>
             </div>
 
-            <h2 className="text-3xl sm:text-5xl font-black tracking-tight text-white leading-tight">
-              {heading}
-            </h2>
-
-            <p className="mt-4 text-slate-400 text-base leading-relaxed">
-              {subtext}
-            </p>
-
-            {/* Structured Contact Cards (RFL Style) */}
-            <div className="mt-8 space-y-4">
-              <div className="flex items-start gap-4 p-4 rounded-2xl bg-slate-950/80 border border-slate-800/90 shadow-md">
+            {/* Structured Contact Cards */}
+            <div className="space-y-4 pt-2">
+              {/* Card 1: Corporate Headquarters */}
+              <div className="flex items-start gap-4 p-5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-red-500/40 transition-colors shadow-lg">
                 <div className="p-3 rounded-xl bg-red-600/10 border border-red-500/20 text-red-400 shrink-0 mt-0.5">
-                  <MapPin className="w-5 h-5" />
+                  <MapPin className="w-5 h-5 text-red-400" />
                 </div>
                 <div>
-                  <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Corporate Headquarters
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                      Corporate Headquarters
+                    </span>
+                    <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-amber-500/10 text-amber-400 border border-amber-500/20">
+                      Motijheel Hub
+                    </span>
                   </div>
-                  <div className="text-sm font-semibold text-white mt-0.5">
-                    BestGroup Tower, Plot 42, Gulshan Avenue, Dhaka 1212
+                  <div className="text-base font-bold text-white mt-1 leading-snug">
+                    9th Floor, DBBL Wohid Tower, Motijheel, Dhaka-1000
                   </div>
-                  <div className="text-xs text-slate-500 mt-0.5">Executive Board Floors 12–16</div>
+                  <div className="text-xs text-slate-400 mt-1">
+                    Central Governance &bull; Executive Board Secretariat
+                  </div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 rounded-2xl bg-slate-950/80 border border-slate-800/90 shadow-md">
-                <div className="p-3 rounded-xl bg-red-600/10 border border-red-500/20 text-red-400 shrink-0 mt-0.5">
-                  <Phone className="w-5 h-5" />
+              {/* Card 2: Hotlines */}
+              <div className="flex items-start gap-4 p-5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-amber-500/40 transition-colors shadow-lg">
+                <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/20 text-amber-400 shrink-0 mt-0.5">
+                  <Phone className="w-5 h-5 text-amber-400" />
                 </div>
                 <div>
                   <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Corporate Toll-Free Hotline
+                    Direct Corporate Hotlines
                   </div>
-                  <div className="text-sm font-semibold text-white mt-0.5">
-                    +880 1800-BESTGRP / +880 2-9880000
+                  <div className="flex flex-wrap items-center gap-3 text-base font-bold text-white mt-1">
+                    <a
+                      href="tel:01910203058"
+                      className="text-amber-400 hover:text-amber-300 hover:underline transition-colors"
+                    >
+                      01910-203058
+                    </a>
+                    <span className="text-slate-600">&bull;</span>
+                    <a
+                      href="tel:01711626577"
+                      className="text-amber-400 hover:text-amber-300 hover:underline transition-colors"
+                    >
+                      01711-626577
+                    </a>
                   </div>
-                  <div className="text-xs text-slate-500 mt-0.5">Sunday to Thursday • 9:00 AM – 6:00 PM BST</div>
+                  <div className="text-xs text-slate-400 mt-1 flex items-center gap-1.5">
+                    <Clock className="w-3.5 h-3.5 text-slate-500" />
+                    <span>Sunday to Thursday &bull; 9:00 AM – 6:00 PM BST</span>
+                  </div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-4 p-4 rounded-2xl bg-slate-950/80 border border-slate-800/90 shadow-md">
-                <div className="p-3 rounded-xl bg-red-600/10 border border-red-500/20 text-red-400 shrink-0 mt-0.5">
-                  <Mail className="w-5 h-5" />
+              {/* Card 3: Official Email */}
+              <div className="flex items-start gap-4 p-5 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-blue-500/40 transition-colors shadow-lg">
+                <div className="p-3 rounded-xl bg-blue-500/10 border border-blue-500/20 text-blue-400 shrink-0 mt-0.5">
+                  <Mail className="w-5 h-5 text-blue-400" />
                 </div>
                 <div>
                   <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                    Investor & Partner Desk
+                    Official Corporate Email
                   </div>
-                  <div className="text-sm font-semibold text-white mt-0.5">
-                    {form_email_destination}
+                  <div className="text-base font-bold text-white mt-1">
+                    <a
+                      href={`mailto:${form_email_destination || 'info@bestgroupatoz.com'}`}
+                      className="text-white hover:text-blue-400 hover:underline transition-colors"
+                    >
+                      {form_email_destination || 'info@bestgroupatoz.com'}
+                    </a>
                   </div>
-                  <div className="text-xs text-slate-500 mt-0.5">Guaranteed 24-Hour SLA Response</div>
+                  <div className="text-xs text-slate-400 mt-1">
+                    Official SLA: Guaranteed 24-Hour Business Response
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Accreditation Note */}
-            <div className="mt-8 p-4 rounded-2xl bg-slate-950 border border-slate-800/60 flex items-center gap-3">
+            {/* Accreditation & Confidentiality Guarantee */}
+            <div className="p-4 rounded-2xl bg-slate-900/50 border border-slate-800/80 flex items-center gap-3">
               <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0" />
-              <div className="text-xs text-slate-400 leading-snug">
-                Strict corporate non-disclosure protocols are maintained for all business development proposals.
+              <div className="text-xs text-slate-300 leading-relaxed">
+                Strict corporate non-disclosure protocols and verified data security are maintained for all business development proposals.
               </div>
             </div>
           </motion.div>
@@ -140,7 +173,7 @@ export const ThemeAContactBlock: React.FC<ContactBlockProps> = ({ content }) => 
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-7"
           >
-            <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-b from-slate-950 via-slate-950/95 to-slate-900 border border-slate-800 shadow-2xl relative">
+            <div className="p-8 sm:p-10 rounded-3xl bg-slate-900/90 border border-slate-800 shadow-2xl backdrop-blur-xl relative">
               <AnimatePresence mode="wait">
                 {formSubmitted ? (
                   <motion.div
@@ -153,13 +186,13 @@ export const ThemeAContactBlock: React.FC<ContactBlockProps> = ({ content }) => 
                       <CheckCircle2 className="w-8 h-8" />
                     </div>
                     <h3 className="text-2xl font-bold text-white mb-2">Corporate Inquiry Dispatched</h3>
-                    <p className="text-slate-400 text-sm max-w-md mx-auto mb-8 leading-relaxed">
-                      Thank you for contacting BestGroup. Your message has been routed to the relevant wing leadership at{' '}
-                      <span className="text-white font-semibold">{form_email_destination}</span>.
+                    <p className="text-slate-300 text-sm max-w-md mx-auto mb-8 leading-relaxed">
+                      Thank you for contacting BEST GROUP. Your proposal has been transmitted to our central headquarters leadership at{' '}
+                      <span className="text-white font-semibold">{form_email_destination || 'info@bestgroupatoz.com'}</span>.
                     </p>
                     <button
                       onClick={() => setFormSubmitted(false)}
-                      className="px-6 py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs font-bold uppercase tracking-wider text-white transition-colors"
+                      className="px-6 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold uppercase tracking-wider text-white transition-colors"
                     >
                       Send Another Inquiry
                     </button>
@@ -170,16 +203,16 @@ export const ThemeAContactBlock: React.FC<ContactBlockProps> = ({ content }) => 
                       <div>
                         <h3 className="text-xl font-bold text-white">Direct Enterprise Proposal</h3>
                         <p className="text-xs text-slate-400 mt-0.5">
-                          Inquiry routed to {form_email_destination}
+                          Inquiry routed directly to Executive Management
                         </p>
                       </div>
-                      <div className="hidden sm:inline-flex items-center gap-1 text-[11px] font-mono text-red-400 bg-red-500/10 px-2.5 py-1 rounded border border-red-500/20">
-                        <Sparkles className="w-3 h-3" />
-                        <span>Fast-Track Desk</span>
+                      <div className="hidden sm:inline-flex items-center gap-1.5 text-[11px] font-mono text-red-400 bg-red-500/10 px-3 py-1 rounded-full border border-red-500/20">
+                        <Sparkles className="w-3 h-3 text-red-400" />
+                        <span>Corporate Desk</span>
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
                           Your Full Name <span className="text-red-500">*</span>
@@ -189,8 +222,8 @@ export const ThemeAContactBlock: React.FC<ContactBlockProps> = ({ content }) => 
                           required
                           value={formData.name}
                           onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          placeholder="e.g., Salman Khan"
-                          className="w-full px-4 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors"
+                          placeholder="e.g., M. Rahman"
+                          className="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors"
                         />
                       </div>
 
@@ -204,12 +237,12 @@ export const ThemeAContactBlock: React.FC<ContactBlockProps> = ({ content }) => 
                           value={formData.email}
                           onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           placeholder="name@company.com"
-                          className="w-full px-4 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors"
+                          className="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors"
                         />
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
                         <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
                           Contact Phone Number
@@ -218,25 +251,26 @@ export const ThemeAContactBlock: React.FC<ContactBlockProps> = ({ content }) => 
                           type="tel"
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          placeholder="+880 1700-000000"
-                          className="w-full px-4 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors"
+                          placeholder="01910-000000"
+                          className="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors"
                         />
                       </div>
 
                       <div>
                         <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
-                          Targeted Business Wing <span className="text-red-500">*</span>
+                          Targeted Company / Wing <span className="text-red-500">*</span>
                         </label>
                         <select
                           value={formData.wing}
                           onChange={(e) => setFormData({ ...formData, wing: e.target.value })}
-                          className="w-full px-4 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors"
+                          className="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-700 text-white text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors"
                         >
-                          <option>Best Real Estate (Commercial & Residential)</option>
-                          <option>Best E-Commerce (Logistics & Marketplace)</option>
-                          <option>Best Model Pharmacy (Supply & Retail)</option>
-                          <option>Best Travel & Tours (Corporate & Luxury)</option>
-                          <option>Group Corporate Investments & M&A</option>
+                          <option>BEST GROUP (Corporate Holding &amp; Governance)</option>
+                          <option>Best Product International Ltd. (E-Commerce)</option>
+                          <option>Best South City Ltd. (Real Estate &amp; Urban Living)</option>
+                          <option>Best Commercial &amp; Builders Ltd. (Commercial Construction)</option>
+                          <option>Best Model Pharmacy Ltd. (Healthcare Chain)</option>
+                          <option>Best International Overseas (Travel &amp; Tours)</option>
                         </select>
                       </div>
                     </div>
@@ -251,15 +285,15 @@ export const ThemeAContactBlock: React.FC<ContactBlockProps> = ({ content }) => 
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         placeholder="Please provide details regarding your requirements, investment scope, or enterprise inquiry..."
-                        className="w-full px-4 py-3.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors"
+                        className="w-full px-4 py-3.5 rounded-xl bg-slate-950 border border-slate-700 text-white placeholder-slate-500 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-colors resize-none"
                       />
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full py-4 rounded-xl bg-gradient-to-r from-red-600 via-red-500 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white font-extrabold text-sm uppercase tracking-wider flex items-center justify-center gap-2.5 transition-all duration-300 shadow-xl shadow-red-600/20 hover:shadow-red-600/35 active:scale-[0.99]"
+                      className="w-full py-4 rounded-xl bg-gradient-to-r from-red-600 via-red-500 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white font-extrabold text-sm uppercase tracking-wider flex items-center justify-center gap-2.5 transition-all duration-300 shadow-xl shadow-red-600/20 hover:shadow-red-600/35 active:scale-[0.99] cursor-pointer"
                     >
-                      <span>Transmit Inquiry to Executive Desk</span>
+                      <span>Transmit Inquiry to Corporate Headquarters</span>
                       <Send className="w-4 h-4" />
                     </button>
                   </form>

@@ -25,13 +25,13 @@ interface ThemeAFooterProps {
 }
 
 export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) => {
-  const siteName = settings?.site_identity?.site_name || 'BestGroup';
+  const siteName = settings?.site_identity?.site_name || 'BEST GROUP';
   const tagline =
     settings?.site_identity?.tagline ||
-    'A premier holding conglomerate operating benchmark ventures across Real Estate, E-Commerce, Modern Healthcare, and Global Tourism.';
-  const headquarters = settings?.site_identity?.headquarters || 'Plot 42, Gulshan Avenue, Dhaka 1212';
-  const phone = settings?.site_identity?.phone || '+880 1800-BESTGRP';
-  const email = settings?.site_identity?.support_email || 'corporate@bestgroup.com';
+    'BEST GROUP — Excellence in Every Endeavor — A premier multi-sector holding conglomerate operating benchmark enterprises across E-Commerce, Real Estate, Construction, Healthcare, and Global Travel.';
+  const headquarters = settings?.site_identity?.headquarters || '9th Floor, DBBL Wohid Tower, Motijheel, Dhaka-1000';
+  const phone = settings?.site_identity?.phone || '01910-203058, 01711-626577';
+  const email = settings?.site_identity?.support_email || 'info@bestgroupatoz.com';
 
   return (
     <footer className="bg-slate-950 border-t border-slate-800 text-slate-400 text-sm relative">
@@ -46,7 +46,7 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
               <div className="text-xs font-bold text-white uppercase tracking-wider">
                 Multi-Sector Scale
               </div>
-              <div className="text-xs text-slate-400">4 Enterprise Wings Under One Flag</div>
+              <div className="text-xs text-slate-400">6 Listed Companies Under One Flag</div>
             </div>
           </div>
 
@@ -68,9 +68,9 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
             </div>
             <div>
               <div className="text-xs font-bold text-white uppercase tracking-wider">
-                Nationwide Presence
+                Central Headquarters
               </div>
-              <div className="text-xs text-slate-400">Over 100K+ Clients & Patients Served</div>
+              <div className="text-xs text-slate-400">DBBL Wohid Tower, Motijheel, Dhaka</div>
             </div>
           </div>
 
@@ -80,7 +80,7 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
             </div>
             <div>
               <div className="text-xs font-bold text-white uppercase tracking-wider">
-                Investor Relations
+                Corporate Inquiries
               </div>
               <div className="text-xs text-slate-400">{email}</div>
             </div>
@@ -101,8 +101,8 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
                 <span className="text-xl font-black tracking-tight text-white flex items-center gap-1">
                   BEST<span className="text-red-500">GROUP</span>
                 </span>
-                <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-slate-400 -mt-1">
-                  Conglomerate Holdings
+                <span className="text-[9px] font-semibold uppercase tracking-[0.16em] text-amber-400 -mt-0.5">
+                  Excellence in Every Endeavor
                 </span>
               </div>
             </Link>
@@ -114,7 +114,7 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
             {/* Newsletter Subscription Box */}
             <div className="p-4 rounded-xl bg-slate-900/80 border border-slate-800">
               <div className="text-xs font-bold text-white uppercase tracking-wider mb-2">
-                Subscribe to Investor Bulletin
+                Subscribe to Executive Bulletin
               </div>
               <form className="flex items-center gap-2" onSubmit={(e) => e.preventDefault()}>
                 <input
@@ -132,59 +132,83 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
             </div>
           </div>
 
-          {/* Column 2: Business Wings (3 cols) */}
+          {/* Column 2: Listed Companies (3 cols) */}
           <div className="lg:col-span-3">
             <h4 className="text-white font-bold text-sm uppercase tracking-wider mb-5 flex items-center gap-2">
               <span className="w-1.5 h-4 bg-red-500 rounded-full"></span>
-              <span>Our Business Wings</span>
+              <span>Listed Companies</span>
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-2.5">
               <li>
                 <Link
-                  href="#wings"
-                  className="text-slate-300 hover:text-red-400 flex items-center justify-between text-sm transition-colors group"
+                  href="/our-sister-concern#ecommerce"
+                  className="text-slate-300 hover:text-red-400 flex items-center justify-between text-xs transition-colors group"
                 >
                   <span className="flex items-center gap-2">
-                    <Building className="w-4 h-4 text-amber-500" />
-                    <span>Best Real Estate</span>
+                    <ShoppingBag className="w-3.5 h-3.5 text-blue-500" />
+                    <span>Best Product Int. Ltd.</span>
                   </span>
-                  <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#wings"
-                  className="text-slate-300 hover:text-red-400 flex items-center justify-between text-sm transition-colors group"
+                  href="/our-sister-concern#real-estate"
+                  className="text-slate-300 hover:text-red-400 flex items-center justify-between text-xs transition-colors group"
                 >
                   <span className="flex items-center gap-2">
-                    <ShoppingBag className="w-4 h-4 text-blue-500" />
-                    <span>Best E-Commerce</span>
+                    <Building className="w-3.5 h-3.5 text-amber-500" />
+                    <span>Best South City Ltd.</span>
                   </span>
-                  <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#wings"
-                  className="text-slate-300 hover:text-red-400 flex items-center justify-between text-sm transition-colors group"
+                  href="/our-sister-concern#construction"
+                  className="text-slate-300 hover:text-red-400 flex items-center justify-between text-xs transition-colors group"
                 >
                   <span className="flex items-center gap-2">
-                    <HeartPulse className="w-4 h-4 text-emerald-500" />
-                    <span>Best Model Pharmacy</span>
+                    <Building2 className="w-3.5 h-3.5 text-orange-500" />
+                    <span>Best Commercial & Builders Ltd.</span>
                   </span>
-                  <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                 </Link>
               </li>
               <li>
                 <Link
-                  href="#wings"
-                  className="text-slate-300 hover:text-red-400 flex items-center justify-between text-sm transition-colors group"
+                  href="/our-sister-concern#pharmacy"
+                  className="text-slate-300 hover:text-red-400 flex items-center justify-between text-xs transition-colors group"
                 >
                   <span className="flex items-center gap-2">
-                    <Plane className="w-4 h-4 text-rose-500" />
-                    <span>Best Travel & Tours</span>
+                    <HeartPulse className="w-3.5 h-3.5 text-emerald-500" />
+                    <span>Best Model Pharmacy Ltd.</span>
                   </span>
-                  <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/our-sister-concern#travel"
+                  className="text-slate-300 hover:text-red-400 flex items-center justify-between text-xs transition-colors group"
+                >
+                  <span className="flex items-center gap-2">
+                    <Plane className="w-3.5 h-3.5 text-rose-500" />
+                    <span>Best International Overseas</span>
+                  </span>
+                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about-us"
+                  className="text-slate-300 hover:text-red-400 flex items-center justify-between text-xs transition-colors group"
+                >
+                  <span className="flex items-center gap-2">
+                    <ShieldCheck className="w-3.5 h-3.5 text-red-500" />
+                    <span>Best Group (Holding)</span>
+                  </span>
+                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
                 </Link>
               </li>
             </ul>
@@ -196,30 +220,55 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
               <span className="w-1.5 h-4 bg-red-500 rounded-full"></span>
               <span>Corporate Links</span>
             </h4>
-            <ul className="space-y-2.5 text-sm text-slate-300">
+            <ul className="space-y-2 text-sm text-slate-300">
               <li>
-                <Link href="#services" className="hover:text-red-400 transition-colors">
-                  Capabilities & R&D
+                <Link href="/about-us" className="hover:text-red-400 transition-colors">
+                  About BEST GROUP
                 </Link>
               </li>
               <li>
-                <Link href="#contact" className="hover:text-red-400 transition-colors">
-                  Corporate Governance
+                <Link href="/chairmans-message" className="text-amber-300 hover:text-amber-200 transition-colors font-medium">
+                  Chairman’s Message
                 </Link>
               </li>
               <li>
-                <Link href="#contact" className="hover:text-red-400 transition-colors">
-                  Investor Relations
+                <Link href="/corporate-desk" className="hover:text-red-400 transition-colors">
+                  Corporate Desk &amp; Governance
                 </Link>
               </li>
               <li>
-                <Link href="#contact" className="hover:text-red-400 transition-colors">
-                  Career Opportunities
+                <Link href="/mission-vision" className="hover:text-red-400 transition-colors">
+                  Mission, Vision &amp; Values
                 </Link>
               </li>
               <li>
-                <Link href="#contact" className="hover:text-red-400 transition-colors">
-                  Sustainability Goals
+                <Link href="/careers" className="hover:text-red-400 transition-colors">
+                  Careers &amp; Opportunities
+                </Link>
+              </li>
+              <li>
+                <Link href="/media-press" className="hover:text-red-400 transition-colors">
+                  Media &amp; Press Center
+                </Link>
+              </li>
+              <li>
+                <Link href="/our-sister-concern" className="hover:text-red-400 transition-colors">
+                  6 Listed Companies
+                </Link>
+              </li>
+              <li>
+                <Link href="/investor-portal" className="hover:text-red-400 transition-colors">
+                  Investor Relations Desk
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="hover:text-red-400 transition-colors">
+                  FAQ &amp; Knowledge
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-red-400 transition-colors">
+                  Contact Headquarters
                 </Link>
               </li>
             </ul>
@@ -246,7 +295,7 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
               </div>
               <div className="pt-2">
                 <Link
-                  href="#contact"
+                  href="/contact"
                   className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-xs font-semibold text-white border border-slate-700 transition-colors"
                 >
                   <span>Request Corporate Visit</span>
@@ -263,13 +312,13 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
             &copy; {new Date().getFullYear()} {siteName} Holdings Ltd. All International Rights Reserved.
           </div>
           <div className="flex flex-wrap items-center gap-6">
-            <Link href="#privacy" className="hover:text-slate-300 transition-colors">
+            <Link href="/privacy-policy" className="hover:text-slate-300 transition-colors">
               Privacy Policy
             </Link>
-            <Link href="#terms" className="hover:text-slate-300 transition-colors">
+            <Link href="/terms-of-engagement" className="hover:text-slate-300 transition-colors">
               Terms of Engagement
             </Link>
-            <Link href="#compliance" className="hover:text-slate-300 transition-colors">
+            <Link href="/contact" className="hover:text-slate-300 transition-colors">
               Compliance & Audit
             </Link>
             <span className="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 font-mono text-red-400">
