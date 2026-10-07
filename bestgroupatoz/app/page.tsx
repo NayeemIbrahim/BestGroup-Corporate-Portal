@@ -1,4 +1,4 @@
-import { getPageData } from '@/lib/api';
+import { getPageData, getApiBaseUrl } from '@/lib/api';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { BlockRenderer } from '@/components/BlockRenderer';
@@ -24,7 +24,7 @@ export default async function HomePage() {
           </div>
           <h1 className="text-2xl font-bold text-white mb-2">Backend Connection Pending</h1>
           <p className="text-slate-400 text-sm mb-6 leading-relaxed">
-            Could not fetch page &quot;home&quot; from Laravel API (<code className="text-amber-300">http://127.0.0.1:8000/api/v1/page/home</code>).
+            Could not fetch page &quot;home&quot; from Laravel API (<code className="text-amber-300">{getApiBaseUrl()}/page/home</code>).
           </p>
           <div className="text-xs text-slate-500 bg-slate-950 p-4 rounded-xl border border-slate-800 text-left font-mono">
             1. Ensure Laravel is running: <br />

@@ -1,13 +1,19 @@
 import { CmsApiResponse, CmsResponseData } from '@/types/cms';
 
-const getApiBaseUrl = () => {
+export const getApiBaseUrl = () => {
   if (process.env.NEXT_PUBLIC_API_URL) {
     return process.env.NEXT_PUBLIC_API_URL.replace(/\/$/, '');
   }
   if (process.env.NEXT_PUBLIC_BACKEND_URL) {
     return `${process.env.NEXT_PUBLIC_BACKEND_URL.replace(/\/$/, '')}/api/v1`;
   }
-  return 'http://127.0.0.1:8000/api/v1';
+  if (process.env.API_URL) {
+    return process.env.API_URL.replace(/\/$/, '');
+  }
+  if (process.env.NODE_ENV === 'development') {
+    return 'http://127.0.0.1:8000/api/v1';
+  }
+  return 'https://admin.bestgroupatoz.com/api/v1';
 };
 
 const API_BASE_URL = getApiBaseUrl();
@@ -49,8 +55,13 @@ export async function getPageData(slug: string = 'home'): Promise<CmsResponseDat
     data = await tryFetch(publicFallbackUrl);
   }
 
-  // 3. If failed and running in local dev, try local Laravel server at 127.0.0.1:8000
-  if (!data && API_BASE_URL !== 'http://127.0.0.1:8000/api/v1') {
+  // 3. Fallback to production admin URL if not already tried
+  if (!data && API_BASE_URL !== 'https://admin.bestgroupatoz.com/api/v1') {
+    data = await tryFetch('https://admin.bestgroupatoz.com/api/v1');
+  }
+
+  // 4. If failed and running in local dev, try local Laravel server at 127.0.0.1:8000
+  if (!data && process.env.NODE_ENV === 'development' && API_BASE_URL !== 'http://127.0.0.1:8000/api/v1') {
     data = await tryFetch('http://127.0.0.1:8000/api/v1');
   }
 
