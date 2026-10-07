@@ -18,7 +18,17 @@
 /backend/.vscode
 /backend/.phpunit.cache
 
-# Next.js frontend ignores
+# Next.js frontend / bestgroupatoz ignores
+/bestgroupatoz/node_modules
+/bestgroupatoz/.next/
+/bestgroupatoz/out/
+/bestgroupatoz/build
+/bestgroupatoz/.env*.local
+/bestgroupatoz/.vercel
+/bestgroupatoz/*.tsbuildinfo
+/bestgroupatoz/next-env.d.ts
+/bestgroupatoz/.eslintcache
+
 /frontend/node_modules
 /frontend/.next/
 /frontend/out/
