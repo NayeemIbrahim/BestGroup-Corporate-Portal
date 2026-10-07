@@ -105,7 +105,7 @@
         "transform": "lodash/{{member}}"
       }
     },
-    "outputFileTracingRoot": "C:\\Users\\Nayeem PC\\Desktop\\Best Group\\frontend",
+    "outputFileTracingRoot": "C:\\Users\\Nayeem PC\\Desktop\\Best Group\\bestgroupatoz",
     "enablePrerenderSourceMaps": true,
     "cacheComponents": false,
     "cacheLife": {
@@ -320,13 +320,13 @@
     "htmlLimitedBots": "[\\w-]+-Google|Google-[\\w-]+|Chrome-Lighthouse|Slurp|DuckDuckBot|baiduspider|yandex|sogou|bitlybot|tumblr|vkShare|quora link preview|redditbot|ia_archiver|Bingbot|BingPreview|applebot|facebookexternalhit|facebookcatalog|Twitterbot|LinkedInBot|Slackbot|Discordbot|WhatsApp|SkypeUriPreview|Yeti|googleweblight",
     "bundlePagesRouterDependencies": false,
     "configFileName": "next.config.ts",
-    "repoRoot": "C:\\Users\\Nayeem PC\\Desktop\\Best Group\\frontend",
+    "repoRoot": "C:\\Users\\Nayeem PC\\Desktop\\Best Group\\bestgroupatoz",
     "turbopack": {
-      "root": "C:\\Users\\Nayeem PC\\Desktop\\Best Group\\frontend"
+      "root": "C:\\Users\\Nayeem PC\\Desktop\\Best Group\\bestgroupatoz"
     },
     "distDirRoot": ".next"
   },
-  "appDir": "C:\\Users\\Nayeem PC\\Desktop\\Best Group\\frontend",
+  "appDir": "C:\\Users\\Nayeem PC\\Desktop\\Best Group\\bestgroupatoz",
   "relativeAppDir": "",
   "files": [
     ".next\\package.json",
