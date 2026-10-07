@@ -205,11 +205,10 @@ export const ThemeAHeader: React.FC<ThemeAHeaderProps> = ({ theme, settings }) =
 
         {/* Main Navbar Bar */}
         <div
-          className={`transition-all duration-300 ${
-            isScrolled
+          className={`transition-all duration-300 ${isScrolled
               ? 'bg-slate-950/95 backdrop-blur-md shadow-2xl border-b border-slate-800 py-3.5'
               : 'bg-slate-950/90 backdrop-blur-sm border-b border-slate-800/60 py-4.5'
-          }`}
+            }`}
         >
           <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
             {/* BestGroup Corporate Logo */}
@@ -251,9 +250,8 @@ export const ThemeAHeader: React.FC<ThemeAHeaderProps> = ({ theme, settings }) =
                 >
                   <span>About Us</span>
                   <ChevronDown
-                    className={`w-4 h-4 text-slate-400 group-hover:text-white transition-transform duration-200 ${
-                      activeMegaMenu === 'about' ? 'rotate-180 text-red-500' : ''
-                    }`}
+                    className={`w-4 h-4 text-slate-400 group-hover:text-white transition-transform duration-200 ${activeMegaMenu === 'about' ? 'rotate-180 text-red-500' : ''
+                      }`}
                   />
                 </Link>
 
@@ -317,9 +315,8 @@ export const ThemeAHeader: React.FC<ThemeAHeaderProps> = ({ theme, settings }) =
                 >
                   <span>Our Ventures &amp; Wings</span>
                   <ChevronDown
-                    className={`w-4 h-4 text-slate-400 group-hover:text-white transition-transform duration-200 ${
-                      activeMegaMenu === 'wings' ? 'rotate-180 text-red-500' : ''
-                    }`}
+                    className={`w-4 h-4 text-slate-400 group-hover:text-white transition-transform duration-200 ${activeMegaMenu === 'wings' ? 'rotate-180 text-red-500' : ''
+                      }`}
                   />
                 </Link>
 

@@ -162,7 +162,7 @@
         </div>
 
         <div class="footer">
-            Best Group Headless CMS & Corporate Portal • Developed by <span>Nefcon IT</span>
+            Best Group Headless CMS & Corporate Portal • Developed by <span>NefconIT</span>
         </div>
     </div>
 </body>

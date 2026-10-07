@@ -13,7 +13,7 @@ export const ThemeARichTextBlock: React.FC<RichTextBlockProps> = ({ content }) =
   const { title, subtitle, body } = content || {};
 
   return (
-    <section className="py-24 bg-slate-950 text-white relative overflow-hidden">
+    <section className="pt-6 pb-20 lg:pt-8 lg:pb-24 bg-slate-950 text-white relative overflow-hidden">
       {/* Background Ambience & Grid Accent */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:3.5rem_3.5rem] pointer-events-none" />
       <div className="absolute top-1/4 right-1/3 w-96 h-96 bg-red-600/5 blur-[120px] rounded-full pointer-events-none" />
@@ -27,9 +27,9 @@ export const ThemeARichTextBlock: React.FC<RichTextBlockProps> = ({ content }) =
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-14 pb-10 border-b border-slate-800/80"
+            className="mb-8 pb-6 border-b border-slate-800/80"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-600/10 border border-red-500/20 text-red-400 text-xs font-bold uppercase tracking-wider mb-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-600/10 border border-red-500/20 text-red-400 text-xs font-bold uppercase tracking-wider mb-3">
               <FileText className="w-3.5 h-3.5" />
               <span>Official Institutional Document</span>
             </div>
@@ -69,10 +69,10 @@ export const ThemeARichTextBlock: React.FC<RichTextBlockProps> = ({ content }) =
           className="rounded-3xl bg-slate-900/60 border border-slate-800/90 p-8 sm:p-14 backdrop-blur-sm shadow-2xl shadow-black/60"
         >
           <div
-            className="rich-text-content space-y-6 text-slate-300 text-base sm:text-lg leading-relaxed font-normal
-              [&_h2]:text-2xl [&_h2]:sm:text-3xl [&_h2]:font-bold [&_h2]:text-white [&_h2]:tracking-tight [&_h2]:mt-10 [&_h2]:mb-4 [&_h2]:pb-2 [&_h2]:border-b [&_h2]:border-slate-800
-              [&_h3]:text-xl [&_h3]:sm:text-2xl [&_h3]:font-bold [&_h3]:text-white [&_h3]:mt-8 [&_h3]:mb-3
-              [&_p]:leading-relaxed [&_p]:text-slate-300 [&_p]:mb-4
+            className="rich-text-content space-y-4 text-slate-300 text-sm leading-relaxed font-normal
+              [&_h2]:text-xl [&_h2]:sm:text-2xl [&_h2]:font-bold [&_h2]:text-white [&_h2]:tracking-tight [&_h2]:mt-8 [&_h2]:mb-3 [&_h2]:pb-2 [&_h2]:border-b [&_h2]:border-slate-800
+              [&_h3]:text-lg [&_h3]:sm:text-xl [&_h3]:font-bold [&_h3]:text-white [&_h3]:mt-6 [&_h3]:mb-2
+              [&_p]:leading-relaxed [&_p]:text-slate-300 [&_p]:mb-3
               [&_strong]:text-white [&_strong]:font-semibold
               [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-2.5 [&_ul]:my-5
               [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:space-y-2.5 [&_ol]:my-5

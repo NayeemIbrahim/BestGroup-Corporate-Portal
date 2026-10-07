@@ -220,20 +220,15 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
               <span className="w-1.5 h-4 bg-red-500 rounded-full"></span>
               <span>Corporate Links</span>
             </h4>
-            <ul className="space-y-2 text-sm text-slate-300">
+            <ul className="space-y-2 text-xs text-slate-300">
               <li>
                 <Link href="/about-us" className="hover:text-red-400 transition-colors">
-                  About BEST GROUP
-                </Link>
-              </li>
-              <li>
-                <Link href="/chairmans-message" className="text-amber-300 hover:text-amber-200 transition-colors font-medium">
-                  Chairman’s Message
+                  About Us
                 </Link>
               </li>
               <li>
                 <Link href="/corporate-desk" className="hover:text-red-400 transition-colors">
-                  Corporate Desk &amp; Governance
+                  Corporate Desk
                 </Link>
               </li>
               <li>
@@ -243,7 +238,7 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
               </li>
               <li>
                 <Link href="/careers" className="hover:text-red-400 transition-colors">
-                  Careers &amp; Opportunities
+                  Career Opportunities
                 </Link>
               </li>
               <li>
@@ -252,23 +247,13 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
                 </Link>
               </li>
               <li>
-                <Link href="/our-sister-concern" className="hover:text-red-400 transition-colors">
-                  6 Listed Companies
-                </Link>
-              </li>
-              <li>
                 <Link href="/investor-portal" className="hover:text-red-400 transition-colors">
-                  Investor Relations Desk
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="hover:text-red-400 transition-colors">
-                  FAQ &amp; Knowledge
+                  Investor Relations
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="hover:text-red-400 transition-colors">
-                  Contact Headquarters
+                  Contact Us
                 </Link>
               </li>
             </ul>
