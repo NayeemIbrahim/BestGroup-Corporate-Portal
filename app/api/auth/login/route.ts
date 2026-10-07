@@ -7,7 +7,7 @@ export async function POST(request: Request) {
     const backendBase = (
       process.env.NEXT_PUBLIC_BACKEND_URL ||
       process.env.NEXT_PUBLIC_API_URL?.replace(/\/api\/v1\/?$/, '') ||
-      'http://127.0.0.1:8000'
+      (process.env.NODE_ENV === 'development' ? 'http://127.0.0.1:8000' : 'https://admin.bestgroupatoz.com')
     ).replace(/\/$/, '');
 
     // Call the Laravel backend API
