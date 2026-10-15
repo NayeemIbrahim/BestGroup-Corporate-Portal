@@ -23,6 +23,14 @@
   },
   "dynamicRoutes": [
     {
+      "page": "/wings/[slug]",
+      "regex": "^/wings/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPslug": "nxtPslug"
+      },
+      "namedRegex": "^/wings/(?<nxtPslug>[^/]+?)(?:/)?$"
+    },
+    {
       "page": "/[slug]",
       "regex": "^/([^/]+?)(?:/)?$",
       "routeKeys": {

@@ -138,7 +138,7 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
             <ul className="space-y-2.5">
               <li>
                 <Link
-                  href="/our-sister-concern#ecommerce"
+                  href="/wings/best-product-international-ltd"
                   className="text-slate-300 hover:text-red-400 flex items-center justify-between text-xs transition-colors group"
                 >
                   <span className="flex items-center gap-2">
@@ -150,7 +150,7 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
               </li>
               <li>
                 <Link
-                  href="/our-sister-concern#real-estate"
+                  href="/wings/best-south-city-ltd"
                   className="text-slate-300 hover:text-red-400 flex items-center justify-between text-xs transition-colors group"
                 >
                   <span className="flex items-center gap-2">
@@ -162,7 +162,7 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
               </li>
               <li>
                 <Link
-                  href="/our-sister-concern#construction"
+                  href="/wings/best-commercial-builders-ltd"
                   className="text-slate-300 hover:text-red-400 flex items-center justify-between text-xs transition-colors group"
                 >
                   <span className="flex items-center gap-2">
@@ -174,7 +174,7 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
               </li>
               <li>
                 <Link
-                  href="/our-sister-concern#pharmacy"
+                  href="/wings/best-model-pharmacy-ltd"
                   className="text-slate-300 hover:text-red-400 flex items-center justify-between text-xs transition-colors group"
                 >
                   <span className="flex items-center gap-2">
@@ -186,7 +186,7 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
               </li>
               <li>
                 <Link
-                  href="/our-sister-concern#travel"
+                  href="/wings/best-international-overseas"
                   className="text-slate-300 hover:text-red-400 flex items-center justify-between text-xs transition-colors group"
                 >
                   <span className="flex items-center gap-2">
@@ -198,7 +198,7 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
               </li>
               <li>
                 <Link
-                  href="/about-us"
+                  href="/wings/best-group-holding"
                   className="text-slate-300 hover:text-red-400 flex items-center justify-between text-xs transition-colors group"
                 >
                   <span className="flex items-center gap-2">

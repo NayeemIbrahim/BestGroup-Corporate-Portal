@@ -108,33 +108,33 @@ const wingDetailsMap: Record<
 const defaultBrands = [
   {
     brand_name: 'Best Group',
-    logo_url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=300&auto=format&fit=crop',
-    website_link: '/about-us',
+    logo_url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop',
+    website_link: '/wings/best-group-holding',
   },
   {
     brand_name: 'Best Product International Ltd.',
-    logo_url: 'https://images.unsplash.com/photo-1556742049-0a67e55722c6?q=80&w=300&auto=format&fit=crop',
-    website_link: '/our-sister-concern#ecommerce',
+    logo_url: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop',
+    website_link: '/wings/best-product-international-ltd',
   },
   {
     brand_name: 'Best South City Ltd.',
-    logo_url: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=300&auto=format&fit=crop',
-    website_link: '/our-sister-concern#real-estate',
+    logo_url: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=600&auto=format&fit=crop',
+    website_link: '/wings/best-south-city-ltd',
   },
   {
     brand_name: 'Best Commercial & Builders Ltd.',
-    logo_url: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=300&auto=format&fit=crop',
-    website_link: '/our-sister-concern#construction',
+    logo_url: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=600&auto=format&fit=crop',
+    website_link: '/wings/best-commercial-builders-ltd',
   },
   {
     brand_name: 'Best Model Pharmacy Ltd.',
-    logo_url: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=300&auto=format&fit=crop',
-    website_link: '/our-sister-concern#pharmacy',
+    logo_url: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=600&auto=format&fit=crop',
+    website_link: '/wings/best-model-pharmacy-ltd',
   },
   {
     brand_name: 'Best International Overseas',
-    logo_url: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=300&auto=format&fit=crop',
-    website_link: '/our-sister-concern#travel',
+    logo_url: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=600&auto=format&fit=crop',
+    website_link: '/wings/best-international-overseas',
   },
 ];
 
@@ -167,8 +167,8 @@ export const ThemeABrandsBlock: React.FC<BrandsBlockProps> = ({ content }) => {
           </p>
         </div>
 
-        {/* 4-Card Enterprise Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-7">
+        {/* 6-Card Enterprise Grid (3 columns on desktop for perfect balance) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {brands.map((brand: any, idx: number) => {
             const meta = wingDetailsMap[brand.brand_name] || {
               icon: Building,
@@ -179,74 +179,87 @@ export const ThemeABrandsBlock: React.FC<BrandsBlockProps> = ({ content }) => {
             };
             const Icon = meta.icon;
 
+            // Direct mapping to dedicated wing page
+            const wingSlugMap: Record<string, string> = {
+              'Best Group': '/wings/best-group-holding',
+              'Best Product International Ltd.': '/wings/best-product-international-ltd',
+              'Best South City Ltd.': '/wings/best-south-city-ltd',
+              'Best Commercial & Builders Ltd.': '/wings/best-commercial-builders-ltd',
+              'Best Model Pharmacy Ltd.': '/wings/best-model-pharmacy-ltd',
+              'Best International Overseas': '/wings/best-international-overseas',
+            };
+
+            const targetUrl = wingSlugMap[brand.brand_name] || brand.website_link || '/our-sister-concern';
+
             return (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className={`group relative rounded-2xl bg-gradient-to-b from-slate-950 via-slate-950/95 to-slate-900 border border-slate-800 ${meta.borderColor} p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-black/60 hover:-translate-y-1.5 flex flex-col justify-between`}
+                transition={{ duration: 0.5, delay: idx * 0.08 }}
+                className="flex flex-col"
               >
-                <div>
-                  {/* Wing Visual Banner / Preview */}
-                  <div className="w-full h-48 rounded-xl overflow-hidden mb-5 bg-slate-900 relative border border-slate-800">
-                    <img
-                      src={brand.logo_url}
-                      alt={brand.brand_name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+                <Link
+                  href={targetUrl}
+                  className={`group relative rounded-2xl bg-gradient-to-b from-slate-950 via-slate-950/95 to-slate-900 border border-slate-800 ${meta.borderColor} p-6 transition-all duration-300 hover:shadow-2xl hover:shadow-black/80 hover:-translate-y-2 flex flex-col justify-between h-full cursor-pointer`}
+                >
+                  <div>
+                    {/* Wing Visual Banner / Preview */}
+                    <div className="w-full h-48 rounded-xl overflow-hidden mb-5 bg-slate-900 relative border border-slate-800">
+                      <img
+                        src={brand.logo_url}
+                        alt={brand.brand_name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
 
-                    {/* Wing Sector Floating Tag */}
-                    <div className="absolute top-3 right-3 p-2 rounded-lg bg-slate-950/80 backdrop-blur-md border border-slate-800 text-white">
-                      <Icon className="w-4 h-4 text-red-400" />
-                    </div>
-
-                    <div className="absolute bottom-3 left-3">
-                      <span className="text-[11px] font-bold px-2.5 py-1 rounded bg-slate-900/90 text-red-400 border border-slate-800 font-mono">
-                        Wing 0{idx + 1}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Title & Tagline */}
-                  <h3 className="text-xl font-extrabold text-white group-hover:text-red-400 transition-colors">
-                    {brand.brand_name}
-                  </h3>
-                  <p className="text-xs font-semibold text-slate-300 mt-1">
-                    {meta.tagline}
-                  </p>
-
-                  {/* Highlight Checklist */}
-                  <div className="mt-4 pt-4 border-t border-slate-800/80 space-y-2">
-                    {meta.highlights.map((h, hIdx) => (
-                      <div key={hIdx} className="flex items-center gap-2 text-xs text-slate-400">
-                        <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0"></span>
-                        <span className="truncate">{h}</span>
+                      {/* Wing Sector Floating Tag */}
+                      <div className="absolute top-3 right-3 p-2 rounded-lg bg-slate-950/80 backdrop-blur-md border border-slate-800 text-white">
+                        <Icon className="w-4 h-4 text-red-400" />
                       </div>
-                    ))}
+
+                      <div className="absolute bottom-3 left-3">
+                        <span className="text-[11px] font-bold px-2.5 py-1 rounded bg-slate-900/90 text-red-400 border border-slate-800 font-mono">
+                          Wing 0{idx + 1}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Title & Tagline */}
+                    <h3 className="text-xl font-extrabold text-white group-hover:text-amber-400 transition-colors">
+                      {brand.brand_name}
+                    </h3>
+                    <p className="text-xs font-semibold text-slate-300 mt-1">
+                      {meta.tagline}
+                    </p>
+
+                    {/* Highlight Checklist */}
+                    <div className="mt-4 pt-4 border-t border-slate-800/80 space-y-2">
+                      {meta.highlights.map((h, hIdx) => (
+                        <div key={hIdx} className="flex items-center gap-2 text-xs text-slate-400">
+                          <span className="w-1.5 h-1.5 rounded-full bg-red-500 shrink-0"></span>
+                          <span className="truncate">{h}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                {/* Footer Action */}
-                <div className="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between">
-                  <a
-                    href={brand.website_link || '#'}
-                    className="text-xs font-bold text-slate-300 group-hover:text-white flex items-center gap-1 transition-colors"
-                  >
-                    <span>Explore Wing</span>
-                    <ArrowRight className="w-3.5 h-3.5 text-red-400 group-hover:translate-x-1 transition-transform" />
-                  </a>
+                  {/* Footer Action */}
+                  <div className="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between">
+                    <span className="text-xs font-bold text-slate-300 group-hover:text-amber-400 flex items-center gap-1.5 transition-colors">
+                      <span>Explore Wing Details</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-amber-400 group-hover:translate-x-1 transition-transform" />
+                    </span>
 
-                  <a
-                    href={brand.website_link || '#'}
-                    className="p-2 rounded-lg bg-slate-800 text-slate-300 group-hover:bg-red-600 group-hover:text-white transition-all duration-200"
-                    title={`Open ${brand.brand_name}`}
-                  >
-                    <ExternalLink className="w-4 h-4" />
-                  </a>
-                </div>
+                    <span
+                      className="p-2 rounded-lg bg-slate-800/90 text-slate-300 group-hover:bg-amber-500 group-hover:text-slate-950 transition-all duration-200"
+                      title={`Open ${brand.brand_name} page`}
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                    </span>
+                  </div>
+                </Link>
               </motion.div>
             );
           })}
