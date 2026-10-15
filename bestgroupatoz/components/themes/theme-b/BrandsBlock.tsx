@@ -23,32 +23,32 @@ const defaultBrands = [
   {
     brand_name: 'Best Group',
     logo_url: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop',
-    website_link: '/our-sister-concern#best-group',
+    website_link: '/wings/best-group-holding',
   },
   {
     brand_name: 'Best Product International Ltd.',
-    logo_url: 'https://images.unsplash.com/photo-1556742049-0a67e55722c6?q=80&w=600&auto=format&fit=crop',
-    website_link: '/our-sister-concern#best-product',
+    logo_url: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop',
+    website_link: '/wings/best-product-international-ltd',
   },
   {
     brand_name: 'Best South City Ltd.',
     logo_url: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=600&auto=format&fit=crop',
-    website_link: '/our-sister-concern#best-south-city',
+    website_link: '/wings/best-south-city-ltd',
   },
   {
     brand_name: 'Best Commercial & Builders Ltd.',
     logo_url: 'https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=600&auto=format&fit=crop',
-    website_link: '/our-sister-concern#best-commercial-builders',
+    website_link: '/wings/best-commercial-builders-ltd',
   },
   {
     brand_name: 'Best Model Pharmacy Ltd.',
     logo_url: 'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?q=80&w=600&auto=format&fit=crop',
-    website_link: '/our-sister-concern#best-model-pharmacy',
+    website_link: '/wings/best-model-pharmacy-ltd',
   },
   {
     brand_name: 'Best International Overseas',
     logo_url: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=600&auto=format&fit=crop',
-    website_link: '/our-sister-concern#best-international-overseas',
+    website_link: '/wings/best-international-overseas',
   },
 ];
 

@@ -1,9 +1,10 @@
 import { getPageData } from '@/lib/api';
+import { getWingBySlug } from '@/data/wings';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import { BlockRenderer } from '@/components/BlockRenderer';
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 
 interface PageProps {
   params: Promise<{
@@ -13,6 +14,14 @@ interface PageProps {
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
+  const wing = getWingBySlug(slug);
+  if (wing) {
+    return {
+      title: `${wing.name} | BEST GROUP Listed Enterprise`,
+      description: wing.tagline,
+    };
+  }
+
   const data = await getPageData(slug);
 
   if (!data) {
@@ -29,6 +38,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function DynamicSlugPage({ params }: PageProps) {
   const { slug } = await params;
+
+  // Direct wing redirection if slug matches a wing
+  const wing = getWingBySlug(slug);
+  if (wing) {
+    redirect(`/wings/${wing.slug}`);
+  }
+
   const data = await getPageData(slug);
 
   if (!data) {

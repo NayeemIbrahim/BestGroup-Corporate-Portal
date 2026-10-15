@@ -9,5 +9,6 @@
   "/icon.png/route": "/icon.png",
   "/investor-portal/page": "/investor-portal",
   "/login/page": "/login",
-  "/page": "/"
+  "/page": "/",
+  "/wings/[slug]/page": "/wings/[slug]"
 }
