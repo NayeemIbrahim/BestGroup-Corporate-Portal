@@ -102,46 +102,6 @@ export default async function WingDetailPage({ params }: WingPageProps) {
 
       {/* Main Content Area (Offset below fixed top navbar) */}
       <main className="flex-1 w-full pt-[108px] lg:pt-[120px]">
-        {/* Sticky Wing Quick-Switcher Bar */}
-        <div className="sticky top-[72px] lg:top-[78px] z-30 bg-slate-950/95 backdrop-blur-xl border-y border-slate-800/80 shadow-2xl py-3 px-4">
-          <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 overflow-x-auto no-scrollbar">
-            <div className="flex items-center gap-2 shrink-0">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-amber-400 font-bold flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
-                <span>Select Wing:</span>
-              </span>
-            </div>
-
-            <div className="flex items-center gap-2">
-              {allWings.map((item, idx) => {
-                const isActive = item.slug === wing.slug;
-                return (
-                  <Link
-                    key={item.slug}
-                    href={`/wings/${item.slug}`}
-                    className={`px-3.5 py-1.5 rounded-full text-xs font-semibold whitespace-nowrap transition-all duration-300 flex items-center gap-2 border ${
-                      isActive
-                        ? 'bg-gradient-to-r from-amber-500/20 to-red-500/20 text-white border-amber-500 shadow-md shadow-amber-500/20 font-bold'
-                        : 'bg-slate-900/60 hover:bg-slate-800/80 text-slate-400 hover:text-white border-slate-800 hover:border-slate-700'
-                    }`}
-                  >
-                    <span className="font-mono text-[10px] text-amber-400">0{idx + 1}</span>
-                    <span>{item.brandName}</span>
-                  </Link>
-                );
-              })}
-            </div>
-
-            <Link
-              href="/our-sister-concern"
-              className="hidden md:inline-flex items-center gap-1 text-xs text-slate-400 hover:text-amber-400 font-semibold shrink-0 transition-colors"
-            >
-              <span>View All 6</span>
-              <ChevronRight className="w-3.5 h-3.5" />
-            </Link>
-          </div>
-        </div>
-
         {/* Hero Section */}
         <section className="relative overflow-hidden pt-12 pb-20 lg:pt-16 lg:pb-28">
           {/* Subtle Ambient Background Gradients */}
