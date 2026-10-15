@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { GlobalSettings, ThemeData } from '@/types/cms';
 import {
   Building2,
@@ -93,18 +94,14 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10">
           {/* Column 1: About BestGroup (4 cols) */}
           <div className="lg:col-span-4">
-            <Link href="/" className="flex items-center gap-3.5 group mb-6">
-              <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-red-600 via-red-500 to-amber-500 text-white shadow-lg shadow-red-600/20">
-                <Building2 className="w-5 h-5" />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-xl font-black tracking-tight text-white flex items-center gap-1">
-                  BEST<span className="text-red-500">GROUP</span>
-                </span>
-                <span className="text-[9px] font-semibold uppercase tracking-[0.16em] text-amber-400 -mt-0.5">
-                  Excellence in Every Endeavor
-                </span>
-              </div>
+            <Link href="/" className="inline-block group mb-6">
+              <Image
+                src="/images/logo-horizontal.png"
+                alt="BEST GROUP - Excellence in Every Endeavor"
+                width={260}
+                height={50}
+                className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_12px_rgba(217,119,6,0.25)]"
+              />
             </Link>
 
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
@@ -307,7 +304,7 @@ export const ThemeAFooter: React.FC<ThemeAFooterProps> = ({ theme, settings }) =
               Compliance & Audit
             </Link>
             <span className="px-2.5 py-1 rounded bg-slate-900 border border-slate-800 font-mono text-red-400">
-              Theme A • RFL Corporate Engine
+              {siteName} • Corporate Portal
             </span>
           </div>
         </div>

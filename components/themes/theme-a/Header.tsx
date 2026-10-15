@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GlobalSettings, ThemeData } from '@/types/cms';
 import {
@@ -212,21 +213,15 @@ export const ThemeAHeader: React.FC<ThemeAHeaderProps> = ({ theme, settings }) =
         >
           <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
             {/* BestGroup Corporate Logo */}
-            <Link href="/" className="flex items-center gap-3.5 group">
-              <div className="relative flex items-center justify-center w-11 h-11 rounded-xl bg-gradient-to-tr from-red-600 via-red-500 to-amber-500 text-white shadow-lg shadow-red-600/20 group-hover:scale-105 transition-transform duration-300">
-                <Building2 className="w-6 h-6" />
-                <span className="absolute -top-1 -right-1 w-3 h-3 bg-white rounded-full flex items-center justify-center">
-                  <span className="w-1.5 h-1.5 bg-red-600 rounded-full"></span>
-                </span>
-              </div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-black tracking-tight text-white flex items-center gap-1">
-                  BEST<span className="text-red-500">GROUP</span>
-                </span>
-                <span className="text-[9px] font-semibold uppercase tracking-[0.16em] text-amber-400 -mt-0.5">
-                  Excellence in Every Endeavor
-                </span>
-              </div>
+            <Link href="/" className="flex items-center gap-3.5 group py-0.5">
+              <Image
+                src="/images/logo-horizontal.png"
+                alt="BEST GROUP - Excellence in Every Endeavor"
+                width={260}
+                height={50}
+                priority
+                className="h-11 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105 drop-shadow-[0_2px_12px_rgba(217,119,6,0.25)]"
+              />
             </Link>
 
             {/* Desktop Navigation: Reorganized with Dropdowns */}

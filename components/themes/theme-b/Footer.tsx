@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import { GlobalSettings, ThemeData } from '@/types/cms';
 import { ArrowUpRight, Zap, Globe2 } from 'lucide-react';
 
@@ -22,9 +23,15 @@ export const ThemeBFooter: React.FC<ThemeBFooterProps> = ({ theme, settings }) =
       </div>
 
       <div className="max-w-5xl mx-auto relative z-10 text-center">
-        {/* Minimalist Brand Symbol */}
-        <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-gradient-to-tr from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 text-emerald-400 mb-6 shadow-xl shadow-emerald-500/10">
-          <Zap className="w-6 h-6 fill-emerald-400 text-emerald-400" />
+        {/* Corporate Brand Logo */}
+        <div className="inline-flex items-center justify-center mb-6">
+          <Image
+            src="/images/logo-horizontal.png"
+            alt="BEST GROUP"
+            width={240}
+            height={46}
+            className="h-12 w-auto object-contain drop-shadow-[0_2px_12px_rgba(217,119,6,0.25)]"
+          />
         </div>
 
         {/* Big Agency Statement */}
@@ -88,7 +95,7 @@ export const ThemeBFooter: React.FC<ThemeBFooterProps> = ({ theme, settings }) =
           </div>
           <div className="flex items-center gap-2 text-emerald-400/80">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-            <span>THEME B • DARK MODERN AGENCY MODE</span>
+            <span>{siteName.toUpperCase()} • ENTERPRISE PORTAL</span>
           </div>
         </div>
       </div>

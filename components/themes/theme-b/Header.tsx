@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { GlobalSettings, ThemeData } from '@/types/cms';
 import {
@@ -52,10 +53,14 @@ export const ThemeBHeader: React.FC<ThemeBHeaderProps> = ({ theme, settings }) =
         >
           {/* Brand Logo / Monogram */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-emerald-500 to-teal-400 p-[1px] flex items-center justify-center group-hover:rotate-12 transition-transform duration-300">
-              <div className="w-full h-full bg-gray-950 rounded-full flex items-center justify-center text-emerald-400">
-                <Zap className="w-4 h-4 fill-emerald-400 text-emerald-400" />
-              </div>
+            <div className="w-8 h-8 rounded-full p-0.5 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+              <Image
+                src="/images/logo-icon.png"
+                alt="BEST GROUP Icon"
+                width={32}
+                height={32}
+                className="w-full h-full object-contain drop-shadow-[0_0_8px_rgba(217,119,6,0.3)]"
+              />
             </div>
             <div className="flex items-center gap-1.5">
               <span className="font-mono text-base font-extrabold tracking-tight text-white group-hover:text-emerald-400 transition-colors">
