@@ -8,8 +8,18 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Best Group Holdings | Real Estate, E-Commerce, Pharmacy & Travel',
+  title: 'BEST GROUP | Excellence in Every Endeavor',
   description: 'Enterprise portfolio website for Best Group, powered by Headless Laravel 11 and Next.js Theme Engine.',
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/favicon.png', type: 'image/png' },
+      { url: '/images/logo-icon.png', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-icon.png' },
+    ],
+  },
 };
 
 export default function RootLayout({

@@ -3,8 +3,10 @@
   "/_global-error/page": "/_global-error",
   "/_not-found/page": "/_not-found",
   "/api/auth/login/route": "/api/auth/login",
+  "/apple-icon.png/route": "/apple-icon.png",
   "/dashboard/page": "/dashboard",
   "/favicon.ico/route": "/favicon.ico",
+  "/icon.png/route": "/icon.png",
   "/investor-portal/page": "/investor-portal",
   "/login/page": "/login",
   "/page": "/"

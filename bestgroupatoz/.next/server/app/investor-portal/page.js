@@ -1,5 +1,5 @@
 var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/investor-portal/page.js")
-R.c("server/chunks/ssr/[root-of-the-server]__0v-sw-2._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__14g9rgy._.js")
 R.c("server/chunks/ssr/node_modules_next_dist_1n3w9lb._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__0wie2sl._.js")
 R.c("server/chunks/ssr/[root-of-the-server]__0j26pto._.js")
@@ -9,5 +9,5 @@ R.c("server/chunks/ssr/node_modules_next_dist_client_components_builtin_forbidde
 R.c("server/chunks/ssr/node_modules_next_dist_client_components_builtin_unauthorized_0l_sp0x.js")
 R.c("server/chunks/ssr/node_modules_next_dist_client_components_builtin_global-error_0q-w892.js")
 R.c("server/chunks/ssr/_next-internal_server_app_investor-portal_page_actions_0emptup.js")
-R.m(20358)
-module.exports=R.m(20358).exports
+R.m(67013)
+module.exports=R.m(67013).exports
