@@ -1,0 +1,13 @@
+{
+  "name": "best-group-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BEST GROUP Corporate Portal Root Scripts",
+  "scripts": {
+    "dev": "npm --prefix bestgroupatoz run dev",
+    "build": "npm --prefix bestgroupatoz run build",
+    "start": "npm --prefix bestgroupatoz run start",
+    "backend": "php backend/artisan serve --port=8000",
+    "open": "start http://localhost:3000"
+  }
+}
