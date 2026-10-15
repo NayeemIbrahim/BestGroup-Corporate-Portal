@@ -46,31 +46,50 @@ This project uses a **Monorepo** structure with two fully decoupled applications
 
 ```
 BestGroup-Corporate-Portal/
-├── backend/          # Laravel 11 — Headless CMS API + Filament v3 Admin Panel
+├── START.bat                 # One-Click Launcher (Starts Laravel + Next.js + opens browser)
+├── run.bat                   # Convenient shorthand for START.bat
+├── package.json              # Monorepo root runner (npm run dev / npm run build)
+├── deployment_guide.txt      # Production VPS & cPanel deployment manual
+│
+├── backend/                  # Laravel 11 — Headless CMS REST API + Filament v3 Back-Office
 │   ├── app/
 │   │   ├── Filament/Resources/   # Page, Theme, Setting, InvestmentReport
 │   │   ├── Http/Controllers/Api/ # AuthController, PageController, IntegrationController
 │   │   ├── Models/               # Page, PageBlock, Theme, Setting, InvestmentReport, User
-│   │   └── Services/             # ExternalERPService (ERP integration placeholder)
+│   │   └── Services/             # ExternalERPService (Enterprise sync placeholder)
 │   ├── database/migrations/
+│   ├── database/seeders/
 │   └── routes/api.php
 │
-├── frontend/         # Next.js 16 (App Router) — Public-facing corporate website
+├── bestgroupatoz/            # Next.js 16 (App Router) — High-Performance Portal Frontend
 │   ├── app/
-│   │   ├── [slug]/page.tsx       # Dynamic CMS-driven pages
-│   │   ├── login/page.tsx        # Authentication page
-│   │   └── api/auth/login/       # Next.js API route (proxies to Laravel)
+│   │   ├── page.tsx              # Dynamic homepage with CMS BlockRenderer
+│   │   ├── [slug]/page.tsx       # Dynamic CMS routing & automatic wing redirects
+│   │   ├── wings/[slug]/         # Dedicated enterprise showcase for all 6 business wings
+│   │   │   ├── page.tsx          # Dynamic wing deep-dive (specs, stats, divisions, projects)
+│   │   │   ├── WingInquiryForm.tsx # Interactive Request For Proposal (RFP) engine
+│   │   │   └── WingFaqAccordion.tsx # Interactive accordion for wing FAQs
+│   │   ├── investor-portal/      # Authenticated investor desk & quarterly reports
+│   │   └── login/                # Executive login with Sanctum bearer token handling
 │   ├── components/
-│   │   ├── themes/theme-a/       # Corporate theme variant A
-│   │   ├── themes/theme-b/       # Corporate theme variant B
-│   │   ├── BlockRenderer.tsx     # Dynamic block rendering engine
-│   │   └── LoginForm.tsx
-│   ├── lib/api.ts                # Typed API client for Laravel
-│   └── types/cms.ts              # Full TypeScript type definitions
+│   │   ├── Navbar.tsx            # Universal navbar switcher (delegates to active theme)
+│   │   ├── Footer.tsx            # Universal footer switcher (delegates to active theme)
+│   │   ├── BlockRenderer.tsx     # Dynamic block builder engine
+│   │   └── themes/
+│   │       ├── theme-a/          # Corporate Luxe Theme (Gold/Ruby Executive Conglomerate)
+│   │       └── theme-b/          # Modern Neo-Tech Theme (Emerald Studio Aesthetics)
+│   ├── data/
+│   │   └── wings.ts              # Rich enterprise data dictionary for all 6 business wings
+│   ├── lib/
+│   │   └── api.ts                # Resilient API client with multi-tier production fallbacks
+│   ├── public/
+│   │   └── images/               # High-resolution transparent official logos & emblem assets
+│   ├── types/
+│   │   └── cms.ts                # Strict TypeScript contracts for CMS payloads
+│   └── package.json              # bestgroupatoz package configuration
 │
 ├── README.md
-├── .gitignore
-└── deployment_guide.txt          # Full VPS + cPanel deployment guide
+└── .gitignore
 ```
 
 ### How It Works
@@ -186,24 +205,41 @@ php artisan serve
 
 ---
 
-### 3. Frontend Setup (Next.js)
+### ⚡ Quick Start: One-Click Launcher (Windows)
+
+For instant local development with zero setup hassle:
+1. Double-click **`START.bat`** (or **`run.bat`**) in the project root.
+2. It automatically:
+   - Verifies PHP and Node.js in PATH.
+   - Spins up the Laravel 11 Backend on `http://127.0.0.1:8000`.
+   - Starts the Next.js 16 Frontend on `http://localhost:3000`.
+   - Opens your default browser automatically to `http://localhost:3000`.
+
+Alternatively, run from root:
+```bash
+npm run dev     # Starts Next.js (bestgroupatoz)
+npm run backend # Starts Laravel (port 8000)
+```
+
+---
+
+### 3. Frontend Setup (Next.js - `bestgroupatoz`)
 
 Open a **new terminal window**:
 
 ```bash
-# Navigate to the frontend
-cd frontend
+# Navigate to the frontend directory
+cd bestgroupatoz
 
 # Install Node dependencies
 npm install
 ```
 
-Create your local environment file:
+Create or verify your local environment file (`bestgroupatoz/.env.local`):
 
-```bash
-# Create frontend/.env.local
-echo "NEXT_PUBLIC_API_URL=http://127.0.0.1:8000/api/v1" > .env.local
-echo "NEXT_PUBLIC_BACKEND_URL=http://127.0.0.1:8000" >> .env.local
+```env
+NEXT_PUBLIC_API_URL=http://127.0.0.1:8000/api/v1
+NEXT_PUBLIC_BACKEND_URL=http://127.0.0.1:8000
 ```
 
 ```bash
@@ -211,7 +247,14 @@ echo "NEXT_PUBLIC_BACKEND_URL=http://127.0.0.1:8000" >> .env.local
 npm run dev
 ```
 
-> The frontend will be available at **http://localhost:3000**
+> The portal frontend will be available at **http://localhost:3000**
+> The dynamic 6 business wings are accessible directly at:
+> - **`/wings/best-product-international-ltd`** (E-Commerce & Logistics)
+> - **`/wings/best-south-city-ltd`** (Real Estate & Housing)
+> - **`/wings/best-commercial-builders-ltd`** (Commercial Construction & High-Rises)
+> - **`/wings/best-model-pharmacy-ltd`** (Cold-Chain Healthcare & Medicine)
+> - **`/wings/best-international-overseas`** (Overseas Mobility, Travel & Tours)
+> - **`/wings/best-group-holding`** (Central Governance & Strategic Investments)
 
 ---
 
@@ -288,9 +331,10 @@ php artisan config:cache && php artisan route:cache && php artisan view:cache
 npm ci && npm run build && npm start
 ```
 
-**Recommended domain structure:**
-- Frontend: `https://bestgroup.com`
-- Backend API + Admin: `https://api.bestgroup.com`
+**Production Domain Infrastructure:**
+- Portal Website: `https://bestgroupatoz.com`
+- Backend API: `https://admin.bestgroupatoz.com/api/v1`
+- Admin & CMS Panel: `https://admin.bestgroupatoz.com/admin`
 
 ---
 

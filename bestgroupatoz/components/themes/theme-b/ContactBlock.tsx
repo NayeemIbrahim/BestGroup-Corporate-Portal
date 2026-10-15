@@ -23,7 +23,7 @@ export const ThemeBContactBlock: React.FC<ContactBlockProps> = ({ content }) => 
   const {
     heading = 'Connect with Our Corporate Headquarters',
     subtext = 'Interested in investment partnerships, vendor onboarding, or enterprise services? Send us a direct inquiry.',
-    form_email_destination = 'corporate@bestgroup.com',
+    form_email_destination = 'info@bestgroupatoz.com',
   } = content || {};
 
   const [submitted, setSubmitted] = useState(false);

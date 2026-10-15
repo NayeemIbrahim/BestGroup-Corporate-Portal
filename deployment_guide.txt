@@ -20,8 +20,8 @@ The project is decoupled into two primary systems:
 - Frontend: Next.js App Router (Dynamically queries Laravel API and renders active theme)
 
 Recommended Domain Structure:
-- Frontend:  https://bestgroup.com (or https://www.bestgroup.com)
-- Backend:   https://api.bestgroup.com (Admin Panel: https://api.bestgroup.com/admin)
+- Frontend:  https://bestgroupatoz.com (or https://www.bestgroupatoz.com)
+- Backend:   https://admin.bestgroupatoz.com (Admin Panel: https://admin.bestgroupatoz.com/admin)
 
 --------------------------------------------------------------------------------
 2. PRODUCTION BUILD COMMANDS
@@ -38,8 +38,8 @@ A. BACKEND (Laravel 11):
    php artisan view:cache
    php artisan event:cache
 
-B. FRONTEND (Next.js):
-   cd frontend
+B. FRONTEND (Next.js - bestgroupatoz):
+   cd bestgroupatoz
    npm ci
    npm run build
    # Run production server via PM2 or node:
@@ -53,7 +53,7 @@ A. Backend (.env):
    APP_NAME=BestGroup
    APP_ENV=production
    APP_DEBUG=false
-   APP_URL=https://api.bestgroup.com
+   APP_URL=https://admin.bestgroupatoz.com
 
    # Database Settings (MySQL)
    DB_CONNECTION=mysql
@@ -65,10 +65,11 @@ A. Backend (.env):
 
    # CORS & Session
    SESSION_DRIVER=database
-   SANCTUM_STATEFUL_DOMAINS=bestgroup.com,www.bestgroup.com
+   SANCTUM_STATEFUL_DOMAINS=bestgroupatoz.com,www.bestgroupatoz.com
 
 B. Frontend (.env.production):
-   NEXT_PUBLIC_API_URL=https://api.bestgroup.com/api/v1
+   NEXT_PUBLIC_API_URL=https://admin.bestgroupatoz.com/api/v1
+   NEXT_PUBLIC_BACKEND_URL=https://admin.bestgroupatoz.com
    PORT=3000
 
 --------------------------------------------------------------------------------
@@ -100,9 +101,9 @@ Step 2: Setup Laravel Backend
    sudo chmod -R 775 /var/www/bestgroup/backend/storage /var/www/bestgroup/backend/bootstrap/cache
 
 Step 3: Setup Next.js Frontend
-   sudo mkdir -p /var/www/bestgroup/frontend
-   # Clone or upload your frontend code to /var/www/bestgroup/frontend
-   cd /var/www/bestgroup/frontend
+   sudo mkdir -p /var/www/bestgroup/bestgroupatoz
+   # Clone or upload your frontend code to /var/www/bestgroup/bestgroupatoz
+   cd /var/www/bestgroup/bestgroupatoz
    npm ci
    npm run build
    # Start Next.js with PM2 daemon:
@@ -112,11 +113,11 @@ Step 3: Setup Next.js Frontend
 
 Step 4: Configure Nginx Virtual Hosts
 
-   A. Backend Nginx Config (/etc/nginx/sites-available/api.bestgroup.com):
+   A. Backend Nginx Config (/etc/nginx/sites-available/admin.bestgroupatoz.com):
    ----------------------------------------------------------------------
    server {
        listen 80;
-       server_name api.bestgroup.com;
+       server_name admin.bestgroupatoz.com;
        root /var/www/bestgroup/backend/public;
 
        add_header X-Frame-Options "SAMEORIGIN";
@@ -144,11 +145,11 @@ Step 4: Configure Nginx Virtual Hosts
        }
    }
 
-   B. Frontend Nginx Config (/etc/nginx/sites-available/bestgroup.com):
+   B. Frontend Nginx Config (/etc/nginx/sites-available/bestgroupatoz.com):
    -------------------------------------------------------------------
    server {
        listen 80;
-       server_name bestgroup.com www.bestgroup.com;
+       server_name bestgroupatoz.com www.bestgroupatoz.com;
 
        location / {
            proxy_pass http://127.0.0.1:3000;
@@ -164,14 +165,14 @@ Step 4: Configure Nginx Virtual Hosts
    }
 
 Step 5: Enable Sites & Issue SSL Certificates
-   sudo ln -s /etc/nginx/sites-available/api.bestgroup.com /etc/nginx/sites-enabled/
-   sudo ln -s /etc/nginx/sites-available/bestgroup.com /etc/nginx/sites-enabled/
+   sudo ln -s /etc/nginx/sites-available/admin.bestgroupatoz.com /etc/nginx/sites-enabled/
+   sudo ln -s /etc/nginx/sites-available/bestgroupatoz.com /etc/nginx/sites-enabled/
    sudo nginx -t
    sudo systemctl reload nginx
 
    # Obtain free Let's Encrypt SSL Certificates:
-   sudo certbot --nginx -d bestgroup.com -d www.bestgroup.com
-   sudo certbot --nginx -d api.bestgroup.com
+   sudo certbot --nginx -d bestgroupatoz.com -d www.bestgroupatoz.com
+   sudo certbot --nginx -d admin.bestgroupatoz.com
 
 --------------------------------------------------------------------------------
 5. SHARED HOSTING (cPanel) DEPLOYMENT
@@ -180,7 +181,7 @@ Step 5: Enable Sites & Issue SSL Certificates
 A. Deploying Laravel Backend on cPanel:
    1. In cPanel File Manager, create a folder outside public_html: `/home/username/bestgroup_backend/`.
    2. Upload all Laravel backend files into `/home/username/bestgroup_backend/`.
-   3. Create a subdomain in cPanel: `api.bestgroup.com`. Set its Document Root to:
+   3. Create a subdomain in cPanel: `admin.bestgroupatoz.com`. Set its Document Root to:
       `/home/username/bestgroup_backend/public`.
    4. In cPanel MySQL Databases:
       - Create a database (e.g. `cpaneluser_bestgroup`).
@@ -197,8 +198,8 @@ B. Deploying Next.js on cPanel:
    Option 1: Using cPanel "Setup Node.js App":
       1. Open "Setup Node.js App" in cPanel.
       2. Choose Node.js version (v18 or v20+).
-      3. Set Application root: `/home/username/bestgroup_frontend`.
-      4. Set Application URL: `bestgroup.com`.
+      3. Set Application root: `/home/username/bestgroupatoz`.
+      4. Set Application URL: `bestgroupatoz.com`.
       5. Set Application startup file: `node_modules/next/dist/bin/next` with argument `start`.
       6. Upload frontend files, run `npm install` and `npm run build` from the cPanel terminal.
       7. Click "Restart Application".
@@ -207,7 +208,7 @@ B. Deploying Next.js on cPanel:
 6. SSL, CACHING & PERFORMANCE OPTIMIZATION
 --------------------------------------------------------------------------------
 1. Cloudflare CDN:
-   - Place Cloudflare in front of `bestgroup.com` and `api.bestgroup.com` for DDoS protection, global asset caching, and automatic WebP image compression.
+   - Place Cloudflare in front of `bestgroupatoz.com` and `admin.bestgroupatoz.com` for DDoS protection, global asset caching, and automatic WebP image compression.
 2. Next.js Image Optimization:
    - External images from Unsplash or Laravel storage are loaded dynamically.
 3. Filament Admin Security:
