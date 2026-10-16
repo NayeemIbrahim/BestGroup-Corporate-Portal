@@ -1,4 +1,7 @@
 {
+    "name": "bestgroup-backend",
+    "version": "1.0.0",
+    "description": "BEST GROUP Headless CMS REST API & Filament v3 Back-Office",
     "private": true,
     "type": "module",
     "scripts": {
