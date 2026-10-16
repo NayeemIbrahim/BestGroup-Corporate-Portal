@@ -13,7 +13,7 @@ interface ThemeBFooterProps {
 export const ThemeBFooter: React.FC<ThemeBFooterProps> = ({ theme, settings }) => {
   const siteName = settings?.site_identity?.site_name || 'BestGroup';
   const tagline = settings?.site_identity?.tagline || 'Leading Multi-Sector Conglomerate';
-  const email = settings?.site_identity?.support_email || 'corporate@bestgroup.com';
+  const email = settings?.site_identity?.support_email || 'info@bestgroupatoz.com';
 
   return (
     <footer className="bg-gray-950 border-t border-white/10 text-gray-400 py-20 px-6 relative overflow-hidden">
