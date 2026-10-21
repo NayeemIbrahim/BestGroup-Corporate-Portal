@@ -35,6 +35,7 @@ yarn-error.log*
 
 # Archives & Temp Files
 *.zip
+!standalone_deploy.zip
 *.tar.gz
 *.rar
 
