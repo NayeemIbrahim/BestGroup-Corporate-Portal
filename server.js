@@ -1,3 +1,10 @@
+if (!Array.prototype.toSorted) {
+  Array.prototype.toSorted = function(compareFn) {
+    const copy = [...this];
+    return compareFn ? copy.sort(compareFn) : copy.sort();
+  };
+}
+
 const { createServer } = require('http');
 const next = require('next');
 
