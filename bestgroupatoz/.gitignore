@@ -8,8 +8,9 @@
 !.yarn/releases
 !.yarn/versions
 
-# Next.js Build Output
-/.next/
+# Next.js Build Output (keep production chunks, ignore cache & dev)
+/.next/cache/
+/.next/dev/
 /out/
 /build
 

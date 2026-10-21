@@ -20,7 +20,8 @@
 
 # Next.js frontend / bestgroupatoz ignores
 /bestgroupatoz/node_modules
-/bestgroupatoz/.next/
+/bestgroupatoz/.next/cache/
+/bestgroupatoz/.next/dev/
 /bestgroupatoz/out/
 /bestgroupatoz/build
 /bestgroupatoz/.env*.local
