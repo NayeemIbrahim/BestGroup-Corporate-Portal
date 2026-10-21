@@ -1,3 +1,10 @@
+if (!Array.prototype.toSorted) {
+  Array.prototype.toSorted = function(compareFn) {
+    const copy = [...this];
+    return compareFn ? copy.sort(compareFn) : copy.sort();
+  };
+}
+
 const path = require('path')
 
 const dir = path.join(__dirname)
